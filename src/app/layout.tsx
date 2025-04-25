@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
+import { Montserrat } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
-
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["200", "300", "400"],
+  display: "swap",
+});
 export const metadata: Metadata = {
-  title: "Lunozart",
+  title: "Auth | Gbese",
   icons: "/favicon.ico",
-  description: "Gbese",
 };
 
 export default function RootLayout({
@@ -16,9 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning={true}>
-      <body className={inter.className}>
-          {children}
+    <html lang="en">
+      <body className={montserrat.className} suppressHydrationWarning={true}>
+        {children} 
       </body>
     </html>
   );
