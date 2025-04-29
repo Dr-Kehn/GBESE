@@ -10,6 +10,10 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+.b-img{
+  background: linear-gradient(45deg,#0d60d8,#0d60d8, url('/public/image/pattern.png'))
+}
+
 a {
   color: inherit;
   text-decoration: none;

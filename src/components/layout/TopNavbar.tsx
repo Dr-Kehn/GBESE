@@ -18,11 +18,12 @@ export default function TopNavbar() {
 
       {/* Navigation Links */}
       <nav className="flex space-x-6 items-center">
-        <NavItem href="/dashboard" label="HOME" icon={<Home className="h-4 w-4" />} />
-        <NavItem href="/send" label="SEND" icon={<Send className="h-4 w-4" />} />
-        <NavItem href="/pay" label="PAY" icon={<DollarSign className="h-4 w-4" />} />
-        <NavItem href="/card" label="CARD" icon={<CreditCard className="h-4 w-4" />} />
-        <NavItem href="/marketplace" label="MARKETPLACE" icon={<ShoppingCart className="h-4 w-4" />} />
+        <NavItem href="/dashboard" label="HOME" icon='/Home.svg' />
+        <NavItem href="/send" label="SEND" icon='/send.svg' />
+        <NavItem href="/pay" label="PAY" icon='/pay.svg' />
+        <NavItem href="/card" label="CARD" icon='/card.svg' />
+        <NavItem href="/marketplace" label="MARKETPLACE" icon='/marketplace.svg' />
+        <NavItem href="/notification" label="" icon='/notification.svg' />
       </nav>
 
       {/* Account Icon */}
@@ -34,13 +35,11 @@ export default function TopNavbar() {
   );
 }
 
-function NavItem({ href, label, icon }: { href: string; label: string; icon: React.ReactNode }) {
+function NavItem({ href, label, icon }: { href: string; label: string; icon: string}) {
   return (
     <Link
-      href={href}
-      className="flex items-center space-x-1 text-sm font-medium text-black hover:text-blue-600"
-    >
-      {icon}
+      href={href} className="flex items-center space-x-1 text-sm font-medium text-black hover:text-blue-600">
+      <Image src={icon} alt={label} width={20} height={20} />
       <span>{label}</span>
     </Link>
   );

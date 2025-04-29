@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button';
 import FiatCryptoToggle from './FiatCryptoToggle';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function BalanceCard() {
   return (
@@ -13,8 +14,9 @@ export default function BalanceCard() {
       </div>
 
       {/* Balance Card */}
-      <div className="bg-balance-card text-white rounded-xl p-6 shadow-md relative">
+      <div className="bg-balance-card b-img text-white rounded-xl p-6 shadow-md relative">
         {/* Optional logo watermark */}
+        <Image className="absolute top-0 bottom-0" src="/image/pattern.png" alt="" width={100} height={100} />
 
         <div className="text-sm ">Fiat Balance</div>
         <div className="text-3xl font-semibold">NGN400.12</div>
@@ -24,16 +26,16 @@ export default function BalanceCard() {
       {/* Action Buttons */}
       <div className="flex flex-wrap gap-2">
         <Link href="/dashboard/spend">
-          <Button variant="outline">Spend</Button>
+          <Button variant="outline"><Image src="/spend.svg" alt="" width={20} height={20}/>Spend</Button>
         </Link>
         <Link href="/dashboard/add-money">
-          <Button> Add Money </Button>
+          <Button><Image src="/AddMoney.svg" alt="" width={20} height={20}/> Add Money </Button>
         </Link>
         <Link href="/dashboard/borrow">
-          <Button> Borrow </Button>
+          <Button> <Image src="/borrow.svg" alt="" width={20} height={20}/>Borrow </Button>
         </Link>
         <Link href="/dashboard/debt-transfer">
-          <Button> Debt Transfer </Button>
+          <Button><Image src="/debt transfer.svg" alt="" width={20} height={20}/> Debt Transfer </Button>
         </Link>
       </div>
     </div>
