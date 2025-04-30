@@ -1,69 +1,89 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
-
-const addMethods = [
-  {
-    title: 'Share your @username',
-    description: 'Receive money from other gbese users with your unique username.',
-    icon: '/username.svg',
-    href: '/add-money/username',
-  },
-  {
-    title: 'Bank Transfer',
-    description: 'From Bank app or Internet banking',
-    icon: '/bank-transfer.svg',
-    href: '/add-money/bank-transfer',
-  },
-  {
-    title: 'Card',
-    description: 'Add and withdraw money with your card',
-    icon: '/cardA.svg',
-    href: '/add-money/card',
-  },
-];
 
 export default function AddNgnSection() {
   return (
     <section className="w-full px-4 py-10 flex flex-col items-center">
-      <h2 className="text-xl md:text-2xl font-semibold mb-6 text-center text-blue-600">
-        Add NGN
-      </h2>
+      <Card className="w-full max-w-xl rounded-2xl shadow-sm">
+        <CardContent className="p-6">
+          <h2 className="text-center text-lg font-semibold mb-6 text-gray-900">
+            Add NGN
+          </h2>
 
-      <Card className="w-full max-w-lg rounded-2xl shadow-sm">
-        <CardContent className="flex flex-col divide-y divide-gray-200 p-2 md:p-4">
-          {addMethods.map((method, index) => (
+          <div className="space-y-4">
+            {/* Share your @username */}
             <Link
-              href={method.href}
-              key={index}
-              className="flex items-start gap-4 py-4 transition hover:bg-gray-50 rounded-xl px-2 md:px-3"
+              href="/dashboard/add-money/username"
+              className="flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition p-4 rounded-lg"
             >
-              <Image
-                src={method.icon}
-                alt=""
-                width={24}
-                height={24}
-                className="mt-1"
-              />
-              <div className="flex-1">
-                <h3 className="text-sm md:text-base font-semibold text-blue-600">
-                  {method.title}
-                </h3>
-                <p className="text-xs md:text-sm text-gray-500">
-                  {method.description}
-                </p>
+              <div className="flex items-center gap-3">
+                <Image
+                  src="/username.svg"
+                  alt="username icon"
+                  width={24}
+                  height={24}
+                />
+                <div>
+                  <p className="text-sm font-medium text-gray-800">
+                    Share your @username
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    Receive money from other gbese users with your unique username.
+                  </p>
+                </div>
               </div>
-              <Image
-                src="/chevron-right.svg"
-                alt=""
-                width={16}
-                height={16}
-                className="mt-1 opacity-60"
-              />
+              <span className="text-gray-400">{'>'}</span>
             </Link>
-          ))}
+
+            {/* Bank Transfer */}
+            <Link
+              href="/dashboard/add-money/bank-transfer.tsx"
+              className="flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition p-4 rounded-lg"
+            >
+              <div className="flex items-center gap-3">
+                <Image
+                  src="/bank-transfer.svg"
+                  alt="bank transfer icon"
+                  width={24}
+                  height={24}
+                />
+                <div>
+                  <p className="text-sm font-medium text-gray-800">
+                    Bank Transfer
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    From Bank app or Internet banking
+                  </p>
+                </div>
+              </div>
+              <span className="text-gray-400">{'>'}</span>
+            </Link>
+
+            {/* Card */}
+            <Link
+              href="/dashboard/add-money/card"
+              className="flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition p-4 rounded-lg"
+            >
+              <div className="flex items-center gap-3">
+                <Image
+                  src="/cardA.svg"
+                  alt="card icon"
+                  width={24}
+                  height={24}
+                />
+                <div>
+                  <p className="text-sm font-medium text-gray-800">Card</p>
+                  <p className="text-xs text-gray-500">
+                    Add and withdraw money with your card
+                  </p>
+                </div>
+              </div>
+              <span className="text-gray-400">{'>'}</span>
+            </Link>
+          </div>
         </CardContent>
       </Card>
     </section>
