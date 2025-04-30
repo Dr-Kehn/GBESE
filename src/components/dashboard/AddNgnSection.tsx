@@ -40,7 +40,7 @@ export default function AddNgnSection() {
 
             {/* Bank Transfer */}
             <Link
-              href="/dashboard/add-money/bank-transfer.tsx"
+              href="/dashboard/add-money/bank-transfer"
               className="flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition p-4 rounded-lg"
             >
               <div className="flex items-center gap-3">
