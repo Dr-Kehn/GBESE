@@ -5,18 +5,18 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 import TopNavbar from '@/components/layout/TopNavbar'
 import BalanceCard from '@/components/dashboard/BalanceCard'
-import { Input } from '@/components/ui/input'
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 
-export default function DebtTransferPage() {
+export default function MyAdsPage() {
   const [loanId, setLoanId] = useState('')
-  const [userId, setUserId] = useState('')
+  const [reason, setReason] = useState('')
   const [open, setOpen] = useState(false)
   const router = useRouter()
 
-  const handleTransfer = () => {
+  const handlePostAd = () => {
     setOpen(true)
     setTimeout(() => {
       setOpen(false)
@@ -31,22 +31,22 @@ export default function DebtTransferPage() {
       <div className="flex flex-col items-center mt-6">
         <BalanceCard />
 
-
-        {/* Transfer Tabs */}
+        {/* Tabs */}
         <Card className="mt-6 p-4 w-full max-w-2xl rounded-2xl shadow-sm">
           <div className="flex justify-center gap-2 mb-6">
-            <Button className="bg-blue-600 text-white" size="sm">Direct Debt Transfer</Button>
-            <Link href="/dashboard/debt-transfer/My-Ads">
-              <Button variant="outline" size="sm">My Ads</Button>
+            <Link href="/dashboard/debt-transfer">
+              <Button variant="outline" size="sm">Direct Debt Transfer</Button>
             </Link>
+            <Button className="bg-blue-600 text-white" size="sm">My Ads</Button>
             <Link href="/dashboard/debt-transfer/Manage-Request">
               <Button variant="outline" size="sm">Manage Request</Button>
             </Link>
           </div>
 
+          {/* My Ads Form */}
           <Card className="p-6 rounded-xl border">
-            <h2 className="text-center font-semibold text-lg">Direct Dept Transfer</h2>
-            <p className="text-center text-sm text-gray-500 mb-6">Directly transfer dept</p>
+            <h2 className="text-center font-semibold text-lg">My Ads</h2>
+            <p className="text-center text-sm text-gray-500 mb-6">Post your Ad</p>
 
             <div className="space-y-4">
               <div>
@@ -58,11 +58,11 @@ export default function DebtTransferPage() {
                 />
               </div>
               <div>
-                <label className="text-sm font-medium">User ID</label>
+                <label className="text-sm font-medium">Reason</label>
                 <Input
-                  placeholder="Input user ID"
-                  value={userId}
-                  onChange={(e) => setUserId(e.target.value)}
+                  placeholder="Input reason"
+                  value={reason}
+                  onChange={(e) => setReason(e.target.value)}
                 />
               </div>
 
@@ -70,13 +70,13 @@ export default function DebtTransferPage() {
                 <DialogTrigger asChild>
                   <Button
                     className="w-full bg-blue-600 text-white"
-                    onClick={handleTransfer}
+                    onClick={handlePostAd}
                   >
-                    Transfer
+                    Post Ad
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="text-center text-lg font-semibold">
-                  Debt transferred successfully!
+                  Ad posted successfully!
                 </DialogContent>
               </Dialog>
             </div>

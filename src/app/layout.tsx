@@ -10,7 +10,7 @@ const montserrat = Montserrat({
 });
 export const metadata: Metadata = {
   title: "Auth | Gbese",
-  icons: "/favicon.ico",
+  icons: "/gbese-icon.png",
 };
 
 export default function RootLayout({
