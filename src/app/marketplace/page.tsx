@@ -1,9 +1,9 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { useState } from 'react'
 import TopNavbar from '@/components/layout/TopNavbar'
 
 const lendersData = [
@@ -58,38 +58,40 @@ const lendersData = [
 ]
 
 export default function MarketplacePage() {
-  const [activeTab, setActiveTab] = useState<'lenders' | 'debtors'>('lenders')
+  const pathname = usePathname()
+  const activeTab = pathname === '/marketplace/debtors' ? 'debtors' : 'lenders'
 
   return (
     <div className="min-h-screen bg-[#FAFAFA]">
       <TopNavbar />
       <div className="max-w-6xl mx-auto px-4 py-6">
-        {/* ✅ Replaced this block */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 px-1">
           <h1 className="text-2xl md:text-3xl font-bold text-[#1E58FF] mb-3 md:mb-0">
             Lenders Marketplace
           </h1>
           <div className="flex gap-2">
-            <button
-              onClick={() => setActiveTab('lenders')}
-              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                activeTab === 'lenders'
-                  ? 'bg-balance-card text-white'
-                  : 'text-gray-500 hover:bg-balance-card hover:text-white'
-              }`}
-            >
-              Lenders
-            </button>
-            <button
-              onClick={() => setActiveTab('debtors')}
-              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                activeTab === 'debtors'
-                  ? 'bg-balance-card text-white'
-                  : 'text-gray-500 hover:bg-balance-card hover:text-white'
-              }`}
-            >
-              Debtors
-            </button>
+            <Link href="/marketplace">
+              <Button
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                  activeTab === 'lenders'
+                    ? 'bg-balance-card text-white'
+                    : 'text-gray-500 hover:bg-balance-card hover:text-white'
+                }`}
+              >
+                Lenders
+              </Button>
+            </Link>
+            <Link href="/marketplace/debtors">
+              <Button
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                  activeTab === 'debtors'
+                    ? 'bg-balance-card text-white'
+                    : 'text-gray-500 hover:bg-balance-card hover:text-white'
+                }`}
+              >
+                Debtors
+              </Button>
+            </Link>
           </div>
         </div>
 
