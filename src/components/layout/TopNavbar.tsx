@@ -16,11 +16,11 @@ export default function TopNavbar() {
 
       {/* Navigation Links */}
       <nav className="flex space-x-6 items-center">
-        <NavItem href="/dashboard" label="HOME" icon="/Home.svg" iconActive="/Home-active.svg" />
-        <NavItem href="/send" label="SEND" icon="/send.svg" iconActive="/send-active.svg" />
-        <NavItem href="/pay" label="PAY" icon="/pay.svg" iconActive="/pay-active.svg" />
-        <NavItem href="/card" label="CARD" icon="/card.svg" iconActive="/card-active.svg" />
-        <NavItem href="/marketplace" label="MARKETPLACE" icon="/marketplace.svg" iconActive="/marketplace-active.svg" />
+        <NavItem href="/dashboard" label="Home" icon="/Home.svg" iconActive="/Home-active.svg" />
+        <NavItem href="/send" label="Send" icon="/send.svg" iconActive="/send-active.svg" />
+        <NavItem href="/pay" label="Pay" icon="/pay.svg" iconActive="/pay-active.svg" />
+        <NavItem href="/card" label="Card" icon="/card.svg" iconActive="/card-active.svg" />
+        <NavItem href="/marketplace" label="Marketplace" icon="/marketplace.svg" iconActive="/marketplace-active.svg" />
         <NavItem href="/notification" label="" icon="/notification.svg" iconActive="/notification-active.svg" />
       </nav>
 

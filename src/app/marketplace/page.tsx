@@ -64,23 +64,33 @@ export default function MarketplacePage() {
     <div className="min-h-screen bg-[#FAFAFA]">
       <TopNavbar />
       <div className="max-w-6xl mx-auto px-4 py-6">
-        <h1 className="text-2xl md:text-3xl font-bold text-center text-[#1E58FF] mb-6">
-          Lenders Marketplace
-        </h1>
-
-        <div className="flex justify-center gap-2 mb-4">
-          <Button
-            variant={activeTab === 'lenders' ? 'default' : 'outline'}
-            onClick={() => setActiveTab('lenders')}
-          >
-            Lenders
-          </Button>
-          <Button
-            variant={activeTab === 'debtors' ? 'default' : 'outline'}
-            onClick={() => setActiveTab('debtors')}
-          >
-            Debtors
-          </Button>
+        {/* ✅ Replaced this block */}
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 px-1">
+          <h1 className="text-2xl md:text-3xl font-bold text-[#1E58FF] mb-3 md:mb-0">
+            Lenders Marketplace
+          </h1>
+          <div className="flex gap-2">
+            <button
+              onClick={() => setActiveTab('lenders')}
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                activeTab === 'lenders'
+                  ? 'bg-balance-card text-white'
+                  : 'text-gray-500 hover:bg-balance-card hover:text-white'
+              }`}
+            >
+              Lenders
+            </button>
+            <button
+              onClick={() => setActiveTab('debtors')}
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                activeTab === 'debtors'
+                  ? 'bg-balance-card text-white'
+                  : 'text-gray-500 hover:bg-balance-card hover:text-white'
+              }`}
+            >
+              Debtors
+            </button>
+          </div>
         </div>
 
         {activeTab === 'lenders' && (
