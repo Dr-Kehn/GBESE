@@ -90,7 +90,7 @@ export default function BankTransferPage() {
               </div>
             </div>
 
-            <Button onClick={handleShare} className="mt-6 w-full max-w-md">
+            <Button onClick={handleShare} className="mt-6 w-full max-w-md bg-balance-card">
               Share
             </Button>
           </CardContent>

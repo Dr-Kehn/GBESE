@@ -1,10 +1,10 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { usePathname } from 'next/navigation'
-import { cn } from '@/lib/utils'
-import { User } from 'lucide-react'
+import Link from 'next/link';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
+import { User } from 'lucide-react';
 
 export default function TopNavbar() {
   return (
@@ -16,12 +16,12 @@ export default function TopNavbar() {
 
       {/* Navigation Links */}
       <nav className="flex space-x-6 items-center">
-        <NavItem href="/dashboard" label="HOME" icon="/Home.svg" />
-        <NavItem href="/send" label="SEND" icon="/send.svg" />
-        <NavItem href="/pay" label="PAY" icon="/pay.svg" />
-        <NavItem href="/card" label="CARD" icon="/card.svg" />
-        <NavItem href="/marketplace" label="MARKETPLACE" icon="/marketplace.svg" />
-        <NavItem href="/notification" label="" icon="/notification.svg" />
+        <NavItem href="/dashboard" label="HOME" icon="/Home.svg" iconActive="/Home-active.svg" />
+        <NavItem href="/send" label="SEND" icon="/send.svg" iconActive="/send-active.svg" />
+        <NavItem href="/pay" label="PAY" icon="/pay.svg" iconActive="/pay-active.svg" />
+        <NavItem href="/card" label="CARD" icon="/card.svg" iconActive="/card-active.svg" />
+        <NavItem href="/marketplace" label="MARKETPLACE" icon="/marketplace.svg" iconActive="/marketplace-active.svg" />
+        <NavItem href="/notification" label="" icon="/notification.svg" iconActive="/notification-active.svg" />
       </nav>
 
       {/* Account */}
@@ -33,12 +33,22 @@ export default function TopNavbar() {
         <span>ACCOUNT</span>
       </Link>
     </header>
-  )
+  );
 }
 
-function NavItem({ href, label, icon }: { href: string; label: string; icon: string }) {
-  const pathname = usePathname()
-  const isActive = pathname === href
+function NavItem({
+  href,
+  label,
+  icon,
+  iconActive,
+}: {
+  href: string;
+  label: string;
+  icon: string;
+  iconActive: string;
+}) {
+  const pathname = usePathname();
+  const isActive = pathname.startsWith(href);
 
   return (
     <Link
@@ -48,8 +58,13 @@ function NavItem({ href, label, icon }: { href: string; label: string; icon: str
         isActive ? 'text-blue-600' : 'text-gray-400 hover:text-blue-600'
       )}
     >
-      <Image src={icon} alt={label} width={20} height={20} />
-      <span>{label}</span>
+      <Image
+        src={isActive ? iconActive : icon}
+        alt={label || 'nav-icon'}
+        width={20}
+        height={20}
+      />
+      {label && <span>{label}</span>}
     </Link>
-  )
+  );
 }
