@@ -2,9 +2,11 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import TopNavbar from '@/components/layout/TopNavbar'
+import PinVerificationModal from '@/components/PinVerificationModal'
 
 const debtorsData = [
   {
@@ -77,6 +79,44 @@ export default function DebtorsMarketplacePage() {
   const pathname = usePathname()
   const activeTab = pathname === '/marketplace/debtors' ? 'debtors' : 'lenders'
 
+  const [showPinModal, setShowPinModal] = useState(false)
+  const [selectedDebtor, setSelectedDebtor] = useState<{
+    name: string
+    price: string
+    date: string
+    report: string
+    orders: string
+    score: string
+  } | null>(null)
+
+  const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handlePayClick = (debtor: any) => {
+    setSelectedDebtor(debtor)
+    setShowPinModal(true)
+  }
+
+  const handleCloseModal = () => {
+    setShowPinModal(false)
+    setSelectedDebtor(null)
+    setError('')
+  }
+
+  const handleSubmitPin = (pin: string) => {
+    setIsLoading(true)
+    // Simulate verification delay
+    setTimeout(() => {
+      if (pin === '1234') {
+        console.log(`PIN verified for ${selectedDebtor?.name}:`, pin)
+        handleCloseModal()
+      } else {
+        setError('Incorrect PIN. Try again.')
+      }
+      setIsLoading(false)
+    }, 1500)
+  }
+
   return (
     <div className="min-h-screen bg-[#FAFAFA]">
       <TopNavbar />
@@ -88,6 +128,7 @@ export default function DebtorsMarketplacePage() {
           <div className="flex gap-2">
             <Link href="/marketplace">
               <Button
+                variant="outline"
                 className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                   activeTab === 'lenders'
                     ? 'bg-balance-card text-white'
@@ -99,6 +140,7 @@ export default function DebtorsMarketplacePage() {
             </Link>
             <Link href="/marketplace/debtors">
               <Button
+                variant="outline"
                 className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                   activeTab === 'debtors'
                     ? 'bg-balance-card text-white'
@@ -137,9 +179,8 @@ export default function DebtorsMarketplacePage() {
                     <td className="px-6 py-4 whitespace-nowrap">{debtor.report}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <Button
-                        className="bg-white border text-[#A1A1A1] cursor-not-allowed"
-                        variant="outline"
-                        disabled
+                        className="text-white bg-[#1E58FF] hover:bg-[#174edb]"
+                        onClick={() => handlePayClick(debtor)}
                       >
                         Pay Debt
                       </Button>
@@ -151,7 +192,6 @@ export default function DebtorsMarketplacePage() {
           </CardContent>
         </Card>
 
-        {/* Pagination */}
         <div className="flex justify-between items-center mt-6">
           <Button variant="outline" size="sm">
             &larr; Previous
@@ -168,6 +208,18 @@ export default function DebtorsMarketplacePage() {
           </Button>
         </div>
       </div>
+
+      {showPinModal && selectedDebtor && (
+        <PinVerificationModal
+          isOpen={showPinModal}
+          onClose={handleCloseModal}
+          onSubmit={handleSubmitPin}
+          debtorName={selectedDebtor.name}
+          amount={parseInt(selectedDebtor.price.replace(/[^\d]/g, ''))}
+          error={error}
+          isLoading={isLoading}
+        />
+      )}
     </div>
   )
 }

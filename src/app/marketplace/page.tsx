@@ -72,6 +72,7 @@ export default function MarketplacePage() {
           <div className="flex gap-2">
             <Link href="/marketplace">
               <Button
+                variant="outline"
                 className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                   activeTab === 'lenders'
                     ? 'bg-balance-card text-white'
@@ -83,6 +84,7 @@ export default function MarketplacePage() {
             </Link>
             <Link href="/marketplace/debtors">
               <Button
+                variant="outline"
                 className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                   activeTab === 'debtors'
                     ? 'bg-balance-card text-white'
