@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { User } from 'lucide-react';
 
 export default function TopNavbar() {
   return (
@@ -29,8 +28,8 @@ export default function TopNavbar() {
         href="/account"
         className="flex items-center space-x-2 text-sm font-medium text-gray-500 hover:text-blue-600"
       >
-        <User className="h-5 w-5" />
-        <span>ACCOUNT</span>
+        <Image src="/account-image.png" alt="" width={30} height={30} />
+        <span>Account</span>
       </Link>
     </header>
   );
