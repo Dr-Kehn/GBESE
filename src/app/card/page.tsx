@@ -6,6 +6,7 @@ import TopNavbar from '@/components/layout/TopNavbar';
 import { Card } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link'
 
 export default function CardPage() {
   return (
@@ -42,7 +43,7 @@ export default function CardPage() {
              <ArrowRight className="h-4 w-4 text-gray-400" />
             </div>
           </Card>
-
+          <Link href="/card/faq">  
           <Card className="flex justify-between px-4 py-3 cursor-pointer hover:shadow-md transition">
             <div className="flex items-start justify-between gap-3">
               <div className='flex gap-x-3'>
@@ -57,6 +58,7 @@ export default function CardPage() {
               </div>
             </div>
           </Card>
+          </Link>
         </div>
       </main>
     </div>
