@@ -7,13 +7,8 @@ export default function SecurityPage() {
   const tabs = [
     {
       title: 'Transaction Pin',
-      href: '/account/security/Pin',
+      href: '/account/security/pin',
       icon: '/securities.svg', // Update with your actual path
-    },
-    {
-      title: 'Manage Registered Devices',
-      href: '/account/security/devices',
-      icon: '/securities.svg',
     },
     {
       title: 'Two Factor Authentication',
