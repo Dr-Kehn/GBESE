@@ -17,8 +17,8 @@ export default function SavedCardsPage() {
     <div className="min-h-screen bg-[#FAFAFA] px-4 py-6 sm:px-6 md:px-8">
       {/* Back Button */}
       <div className="mb-6">
-        <Link href="/w2/account/saved-card" className="flex items-center text-sm text-gray-600 hover:text-gray-800">
-          <Image src="/icons/back-arrow.svg" alt="Back" width={16} height={16} className="mr-2" />
+        <Link href="/w2/account/saved-cards" className="flex items-center text-sm text-gray-600 hover:text-gray-800">
+          <Image src="/arrow-left.svg" alt="Back" width={16} height={16} className="mr-2" />
           <span>Back</span>
         </Link>
       </div>
@@ -65,7 +65,7 @@ export default function SavedCardsPage() {
           </div>
 
           <DialogFooter className="mt-6">
-            <Link href="/w2/account/saved-card">
+            <Link href="/w2/account/saved-cards">
               <Button className="w-full bg-0D60D8 cursor-pointer hover:bg-blue-600">Link card</Button>
             </Link>
           </DialogFooter>
