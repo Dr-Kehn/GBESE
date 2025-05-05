@@ -66,7 +66,7 @@ export default function SavedCardsPage() {
 
           <DialogFooter className="mt-6">
             <Link href="/w2/account/saved-cards">
-              <Button className="w-full bg-0D60D8 cursor-pointer hover:bg-blue-600">Link card</Button>
+              <Button className="w-full bg-[#0D60D8] cursor-pointer hover:bg-blue-600">Link card</Button>
             </Link>
           </DialogFooter>
         </DialogContent>
