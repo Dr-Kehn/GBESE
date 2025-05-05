@@ -17,7 +17,7 @@ export default function SavedCardsPage() {
     <div className="min-h-screen bg-[#FAFAFA] px-4 py-6 sm:px-6 md:px-8">
       {/* Back Button */}
       <div className="mb-6">
-        <Link href="/w2/account/saved-cards" className="flex items-center text-sm text-gray-600 hover:text-gray-800">
+        <Link href="/w2/account" className="flex items-center text-sm text-gray-600 hover:text-gray-800">
           <Image src="/arrow-left.svg" alt="Back" width={16} height={16} className="mr-2" />
           <span>Back</span>
         </Link>
