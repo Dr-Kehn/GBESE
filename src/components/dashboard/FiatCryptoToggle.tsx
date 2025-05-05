@@ -31,14 +31,14 @@ const FiatCryptoToggle = () => {
   return (
     <div className="flex gap-2 shadow-2xl bg-[#F5F5F5] rounded-[10px] self-end">
       <Button
-      className={toggleFiat ? 'border-0 outline-0 text-white bg-[#0d60d8]' : 'border-0 outline-0 bg-inherit text-[#0d60d8]'}
+      className={toggleFiat ? 'border-0 outline-0 text-white bg-[#0d60d8] w-[50%]' : 'border-0 outline-0 bg-inherit text-[#0d60d8] w-[50%]'}
         variant={!isCrypto ? 'default' : 'outline'}
         onClick={handleToggleFiat}
       >
         Fiat
       </Button>
       <Button
-      className={!toggleFiat ? 'border-0 outline-0 text-white bg-[#0d60d8]' : 'border-0 outline-0 bg-inherit text-[#0d60d8]'}
+      className={!toggleFiat ? 'border-0 outline-0 text-white bg-[#0d60d8] w-[50%]' : 'border-0 outline-0 bg-inherit text-[#0d60d8] w-[50%]'}
         variant={isCrypto ? 'default' : 'outline'}
         onClick={handleToggleFiat}
       >
