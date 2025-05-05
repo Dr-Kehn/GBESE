@@ -18,7 +18,7 @@ export default function LoanForm() {
 
         {/* Back */}
         <button
-          onClick={() => router.push("/dashboard/borrow")}
+          onClick={() => router.push("/w2/dashboard/borrow")}
           className="text-sm text-gray-500 hover:text-gray-700 mt-4 inline-block"
         >
           &lt; Back

@@ -117,7 +117,7 @@ export default function MarketplacePage() {
                       <td className="px-6 py-4 whitespace-nowrap">{lender.duration}</td>
                       <td className="px-6 py-4 whitespace-nowrap">{lender.rate}</td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <Link href="/dashboard/borrow/loan">
+                        <Link href="/w2/dashboard/borrow/loan">
                           <Button
                             className="bg-white border text-[#A1A1A1] hover:bg-balance-card hover:text-white transition-colors"
                             variant="outline"

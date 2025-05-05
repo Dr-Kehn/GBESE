@@ -34,7 +34,7 @@ export default function BorrowOptionsCard() {
 
           {/* Loan - Active */}
           <div
-            onClick={() => router.push("/marketplace")}
+            onClick={() => router.push("/w2/marketplace")}
             className="bg-blue-600 p-4 rounded-lg text-white cursor-pointer hover:bg-blue-700 transition"
           >
             <p className="font-semibold">Loan</p>
