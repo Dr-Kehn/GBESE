@@ -16,7 +16,7 @@ export default function AddNgnSection() {
           <div className="space-y-4">
             {/* Share your @username */}
             <Link
-              href="/dashboard/add-money/username"
+              href="/w2/dashboard/add-money/username"
               className="flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition p-4 rounded-lg"
             >
               <div className="flex items-center gap-3">
@@ -40,7 +40,7 @@ export default function AddNgnSection() {
 
             {/* Bank Transfer */}
             <Link
-              href="/dashboard/add-money/bank-transfer"
+              href="/w2/dashboard/add-money/bank-transfer"
               className="flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition p-4 rounded-lg"
             >
               <div className="flex items-center gap-3">
@@ -64,7 +64,7 @@ export default function AddNgnSection() {
 
             {/* Card */}
             <Link
-              href="/dashboard/add-money/card"
+              href="/w2/dashboard/add-money/card"
               className="flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition p-4 rounded-lg"
             >
               <div className="flex items-center gap-3">
