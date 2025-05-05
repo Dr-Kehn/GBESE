@@ -32,39 +32,39 @@ export default function BalanceCard() {
 
       {/* Action Buttons */}
       <div className="grid lg:grid-cols-4 grid-cols-2 gap-2 w-full">
-        <Link href="/dashboard">
+        <Link href="/w2/dashboard">
           <Button
             variant={pathname === "/dashboard" ? "active" : "outline"}
-            className="w-full"
+            className="w-full cursor-pointer"
           >
             <Image src="/spend.svg" alt="" width={20} height={20} />
             Spend
           </Button>
         </Link>
-        <Link href="/dashboard/add-money">
+        <Link href="/w2/dashboard/add-money">
           <Button
             variant={pathname === "/dashboard/add-money" ? "active" : "outline"}
-            className="w-full"
+            className="w-full cursor-pointer"
           >
             <Image src="/AddMoney.svg" alt="" width={20} height={20} />
             Add Money
           </Button>
         </Link>
-        <Link href="/dashboard/borrow">
+        <Link href="/w2/dashboard/borrow">
           <Button
             variant={pathname === "/dashboard/borrow" ? "active" : "outline"}
-            className="w-full"
+            className="w-full cursor-pointer"
           >
             <Image src="/borrow.svg" alt="" width={20} height={20} />
             Borrow
           </Button>
         </Link>
-        <Link href="/dashboard/debt-transfer">
+        <Link href="/w2/dashboard/debt-transfer">
           <Button
             variant={
               pathname === "/dashboard/debt-transfer" ? "active" : "outline"
             }
-            className="w-full"
+            className="w-full cursor-pointer"
           >
             <Image src="/debt transfer.svg" alt="" width={20} height={20} />
             Debt Transfer
