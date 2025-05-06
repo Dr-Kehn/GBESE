@@ -59,13 +59,13 @@ export default function NavBar() {
           iconActive="/Home-active.svg"
         />
         <NavItem
-          href="/w3/send"
+          href="/w3/dashboard"
           label="Send"
           icon="/send.svg"
           iconActive="/send-active.svg"
         />
         <NavItem
-          href="/w3/card"
+          href="/w3/dashboard"
           label="Card"
           icon="/card.svg"
           iconActive="/card-active.svg"
