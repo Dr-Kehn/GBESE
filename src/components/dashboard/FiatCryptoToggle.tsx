@@ -1,46 +1,39 @@
-// src/app/components/dashboard/FiatCryptoToggle.tsx
 'use client';
 
 import { useRouter, usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { useState } from 'react';
-
 
 const FiatCryptoToggle = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const isCrypto = pathname.includes('/dashboard/crypto');
+  const isCrypto = pathname.includes('/w3/dashboard');
 
-  const handleToggle = (type: 'fiat' | 'crypto') => {
-    if (type === 'fiat') {
-      router.push('/dashboard');
-    } else {
-      router.push('/dashboard/crypto');
+  const handleFiatClick = () => {
+    if (isCrypto) {
+      router.push('/w2/dashboard'); // Navigate to Fiat
     }
   };
 
-  const [toggleFiat, setToggleFiat] = useState(true);
-
-  const handleToggleFiat = () => {
-    handleToggle(toggleFiat ? 'fiat' : 'crypto');
-    setToggleFiat(prevState => !prevState)
-  }
-
+  const handleCryptoClick = () => {
+    if (!isCrypto) {
+      router.push('/w3/dashboard'); // Navigate to Crypto
+    }
+  };
 
   return (
     <div className="flex gap-2 shadow-2xl bg-[#F5F5F5] rounded-[10px] self-end">
       <Button
-      className={toggleFiat ? 'border-0 outline-0 text-white bg-[#0d60d8] w-[50%]' : 'border-0 outline-0 bg-inherit text-[#0d60d8] w-[50%]'}
+        className={!isCrypto ? 'border-0 outline-0 text-white bg-[#0d60d8] w-[50%]' : 'border-0 outline-0 bg-inherit text-[#0d60d8] w-[50%]'}
         variant={!isCrypto ? 'default' : 'outline'}
-        onClick={handleToggleFiat}
+        onClick={handleFiatClick}
       >
         Fiat
       </Button>
       <Button
-      className={!toggleFiat ? 'border-0 outline-0 text-white bg-[#0d60d8] w-[50%]' : 'border-0 outline-0 bg-inherit text-[#0d60d8] w-[50%]'}
+        className={isCrypto ? 'border-0 outline-0 text-white bg-[#0d60d8] w-[50%]' : 'border-0 outline-0 bg-inherit text-[#0d60d8] w-[50%]'}
         variant={isCrypto ? 'default' : 'outline'}
-        onClick={handleToggleFiat}
+        onClick={handleCryptoClick}
       >
         Crypto
       </Button>

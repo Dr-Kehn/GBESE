@@ -11,7 +11,7 @@ const workSans = Work_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Gbese",
+  title: "Gbese | Fiat",
   icons: "/gbese-icon.png",
 };
 
