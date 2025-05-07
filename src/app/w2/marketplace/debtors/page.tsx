@@ -77,7 +77,7 @@ const debtorsData = [
 
 export default function DebtorsMarketplacePage() {
   const pathname = usePathname()
-  const activeTab = pathname === '/marketplace/debtors' ? 'debtors' : 'lenders'
+  const activeTab = pathname === '/w2/marketplace/debtors' ? 'debtors' : 'lenders'
 
   const [showPinModal, setShowPinModal] = useState(false)
   const [selectedDebtor, setSelectedDebtor] = useState<{

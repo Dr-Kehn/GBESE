@@ -34,7 +34,7 @@ export default function BalanceCard() {
       <div className="grid lg:grid-cols-4 grid-cols-2 gap-2 w-full">
         <Link href="/w2/dashboard">
           <Button
-            variant={pathname === "/dashboard" ? "active" : "outline"}
+            variant={pathname === "/w2/dashboard" ? "active" : "outline"}
             className="w-full cursor-pointer"
           >
             <Image src="/spend.svg" alt="" width={20} height={20} />
@@ -43,7 +43,7 @@ export default function BalanceCard() {
         </Link>
         <Link href="/w2/dashboard/add-money">
           <Button
-            variant={pathname === "/dashboard/add-money" ? "active" : "outline"}
+            variant={pathname === "/w2/dashboard/add-money" ? "active" : "outline"}
             className="w-full cursor-pointer"
           >
             <Image src="/AddMoney.svg" alt="" width={20} height={20} />
@@ -52,7 +52,7 @@ export default function BalanceCard() {
         </Link>
         <Link href="/w2/dashboard/borrow">
           <Button
-            variant={pathname === "/dashboard/borrow" ? "active" : "outline"}
+            variant={pathname === "/w2/dashboard/borrow" ? "active" : "outline"}
             className="w-full cursor-pointer"
           >
             <Image src="/borrow.svg" alt="" width={20} height={20} />
@@ -62,7 +62,7 @@ export default function BalanceCard() {
         <Link href="/w2/dashboard/debt-transfer">
           <Button
             variant={
-              pathname === "/dashboard/debt-transfer" ? "active" : "outline"
+              pathname === "/w2/dashboard/debt-transfer" ? "active" : "outline"
             }
             className="w-full cursor-pointer"
           >
