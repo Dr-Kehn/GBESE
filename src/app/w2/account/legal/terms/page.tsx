@@ -22,9 +22,9 @@ export default function TermsPage() {
       <h1 className="text-xl md:text-2xl font-semibold text-center mb-6">Terms and conditions</h1>
 
       <Card className="h-[70vh] overflow-y-auto">
-        <CardContent className="p-6 space-y-4 text-sm text-muted-foreground leading-relaxed">
+        <CardContent className="p-6 space-y-4 text-sm leading-relaxed">
           {/* Place your original Terms and Conditions content here */}
-          <p className="text-muted">
+          <p className="">
 
 Welcome to GBESE—a peer-to-peer credit transfer platform built to democratize access to credit and transform the way debt is shared.
 
