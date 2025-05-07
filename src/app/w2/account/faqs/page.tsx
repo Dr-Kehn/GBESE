@@ -10,7 +10,7 @@ export default function FAQPage() {
     <div className="max-w-2xl mx-auto px-4 py-8 space-y-6">
       <Link href="/w2/account" className="flex items-center text-sm text-muted-foreground hover:underline w-fit">
         <Image src="/arrow-left.svg" alt="Back" width={16} height={16} className="mr-2" />
-        <span>&lt; Back</span>
+        <span>Back</span>
       </Link>
 
       <h1 className="text-2xl font-bold text-center">Frequently Asked Questions</h1>
