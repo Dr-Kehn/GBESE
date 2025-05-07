@@ -7,31 +7,31 @@ const features = [
     title: "See the System for What It Is",
     description:
       "Uncover the truth behind interest rates, debt traps, and credit games designed to keep you stuck",
-    img: "/images/money.jpg", // replace with your actual image path in public/images/
+    img: "/blog/money.png", // replace with your actual image path in public/blog/
   },
   {
     title: "Community over Credit Score",
     description:
       "Join a growing movement of people tired of being defined by numbers. Share stories, find support, and grow together.",
-    img: "/images/community.jpg",
+    img: "/blog/community.png",
   },
   {
     title: "Tools for Real People",
     description:
       "Get access to debt relief tips, budgeting tools, and financial education built for everyday struggles—not Wall Street.",
-    img: "/images/tools.jpg",
+    img: "/blog/tools.png",
   },
   {
     title: "Reclaim Your Financial Power",
     description:
       "Take back control with transparent insights and smart alternatives to traditional banking. No jargon. No shame.",
-    img: "/images/plant.jpg",
+    img: "/blog/plant.png",
   },
 ];
 
 export default function GbeseFeatures() {
   return (
-    <section className="bg-blue-50 py-12 px-4 sm:px-6 lg:px-8">
+    <section className="bg-blue-50 py-12 px-4 sm:px-6 lg:px-20">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl font-bold text-blue-900">
           Why You Should Get <br className="hidden sm:block" /> a Gbese App
