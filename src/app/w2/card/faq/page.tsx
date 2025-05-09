@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import TopNavbar from '@/components/layout/TopNavbar'
 
 export default function VirtualCardFaqsPage() {
   const faqs = [
@@ -36,7 +35,6 @@ export default function VirtualCardFaqsPage() {
 
   return (
     <div className="bg-[#FAFAFA] min-h-screen text-[#2C2C2C]">
-      <TopNavbar />
 
       <div className="max-w-3xl mx-auto px-4 py-10">
         {/* Header */}
