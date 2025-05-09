@@ -29,12 +29,16 @@ export default function HomeTopNavbar() {
           </ul>
         </div>
         <div className=" space-x-2 ml-6 hidden md:flex">
+          <Link href="/w2/dashboard">
           <button className="px-4 py-1.5 border border-[#2a5db0] rounded text-[#2a5db0] text-xs font-semibold flex items-center justify-center">
             <i className="far fa-file-alt mr-1"></i> Sign in
           </button>
+          </Link>
+          <Link href="/w2/dashboard">
           <button className="px-4 py-1.5 border border-[#2a5db0] rounded text-[#2a5db0] text-xs font-semibold flex items-center justify-center">
             <i className="far fa-file-alt mr-1"></i> Sign Up
           </button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
