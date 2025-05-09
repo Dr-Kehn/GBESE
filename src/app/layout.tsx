@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Work_Sans } from "next/font/google";
-import { Toaster } from 'sonner';
+import { Toaster } from "sonner";
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -22,7 +22,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={workSans.className} suppressHydrationWarning={true}>
-        {children}
+        <div> {children}</div>
+
         <Toaster />
       </body>
     </html>
