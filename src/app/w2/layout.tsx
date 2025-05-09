@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={workSans.className} suppressHydrationWarning={true}>
-      <TopNavbar />
+        <TopNavbar />
         {children}
         <Toaster />
       </body>
