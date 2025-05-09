@@ -31,7 +31,7 @@ export default function CardPage() {
             <div className="flex items-start gap-3">
               <div className="w-6 h-6 bg-gray-200 rounded-full mt-1" />
               <div>
-                <p className="text-sm font-semibold text-white">Request A Card</p>
+                <p className="text-sm font-semibold text-black">Request A Card</p>
                 <p className="text-xs text-gray-500">Get a virtual card for your local and international payments</p>
               </div>
              <ArrowRight className="h-4 w-4 text-gray-400" />
@@ -43,7 +43,7 @@ export default function CardPage() {
               <div className='flex gap-x-3'>
                 <div className="w-6 h-6 bg-gray-200 rounded-full mt-1" />
                 <div>
-                  <p className="text-sm font-semibold text-white">Card FAQs</p>
+                  <p className="text-sm font-semibold text-black">Card FAQs</p>
                   <p className="text-xs text-gray-500">Learn more about Gbese card</p>
                 </div>
               </div> 
