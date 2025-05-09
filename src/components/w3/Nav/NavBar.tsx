@@ -159,7 +159,7 @@ export default function NavBar() {
               icon="/question-circle.svg"
             />
             <MobileNavItem
-              href=""
+              href="/w2/account"
               label="0xf616...7f7e"
               icon="/gbese-icon.svg"
             />
