@@ -1,7 +1,9 @@
+"use client";
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import TopNavbar from '../../../../components/layout/TopNavbar';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation'; // ✅ Updated import
 
 const WithdrawFunds: React.FC = () => {
   const [balance, setBalance] = useState<number | null>(null);
