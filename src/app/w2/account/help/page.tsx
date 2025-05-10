@@ -34,7 +34,7 @@ export default function HelpPage() {
 
         {/* Chat With Us */}
         <Link
-          href="/w2/account/Chat"
+          href="/w2/account/help/chat"
           className="flex items-center justify-between w-full bg-white rounded-xl shadow-sm p-4 hover:bg-gray-50 transition"
         >
           <div className="flex items-center space-x-3">
