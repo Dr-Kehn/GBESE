@@ -75,8 +75,6 @@ export default function CreditScorePage() {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="excellent" stackId="a" fill="#2563eb" />
-                <Bar dataKey="poor" stackId="a" fill="#ef4444" />
               </BarChart>
             </ResponsiveContainer>
           </div>
