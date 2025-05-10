@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import TopNavbar from '../../../components/layout/TopNavbar';
-import { fetchBanks, Bank } from '../../../lib/banks';
+import TopNavbar from '../../../../../components/layout/TopNavbar';
+import { fetchBanks, Bank } from '../../../../../lib/banks';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-
 
 const SelectBank: React.FC = () => {
   const [banks, setBanks] = useState<Bank[]>([]);
@@ -29,7 +28,7 @@ const SelectBank: React.FC = () => {
           <button className="text-sm text-gray-500 mb-4 hover:underline" onClick={handleBack2}>&larr; Back</button>
 
           <h2 className="text-xl font-semibold text-center mb-1">Select a bank</h2>
-          <p className="text-sm text-gray-400 text-center mb-6"> <Link href="/new-saved-bank">+ Add a bank account</Link></p>
+          <p className="text-sm text-gray-400 text-center mb-6"> <Link href="../new-saved-bank/page">+ Add a bank account</Link></p>
 
           {loading ? (
             <p className="text-center text-gray-400">Loading banks...</p>

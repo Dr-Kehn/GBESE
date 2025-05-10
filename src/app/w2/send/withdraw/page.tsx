@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import TopNavbar from '../../../components/layout/TopNavbar';
+import TopNavbar from '../../../../components/layout/TopNavbar';
 import { useRouter } from 'next/router';
 
 const WithdrawFunds: React.FC = () => {
@@ -11,11 +11,11 @@ const WithdrawFunds: React.FC = () => {
     const router = useRouter();
 
     const handleContinue = () => {
-    router.push('/select-bank');
+    router.push('./select-bank/page');
     };
 
     const handleBack1 = () => {
-    router.push('../send/page');
+    router.push('../../send/page');
     };
 
 
