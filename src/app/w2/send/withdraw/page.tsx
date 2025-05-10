@@ -50,7 +50,7 @@ const WithdrawFunds: React.FC = () => {
           <button 
             className="text-sm text-gray-500 mb-4 hover:underline"
             onClick={handleBack1}>
-            &larr; Back</button>
+            〈 Back</button>
 
           <h2 className="text-xl font-semibold text-center mb-1">Withdraw funds</h2>
           <p className="text-sm text-gray-400 text-center mb-6">
