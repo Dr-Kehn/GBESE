@@ -18,7 +18,7 @@ export default function BorrowOptionsCard() {
         <div className="mt-4 rounded-xl border border-gray-200 p-6 bg-white shadow-sm space-y-4">
           {/* Overdraft - Disabled */}
           <div
-            onClick={() => router.push("/w2/manage-loan")}
+            onClick={() => router.push("/w2/dashboard/borrow/manage-loan")}
             className="bg-blue-600 p-4 rounded-lg text-white cursor-pointer hover:bg-blue-700 transition">
             <p className="font-semibold">Manage Loan</p>
             <p className="text-sm">
