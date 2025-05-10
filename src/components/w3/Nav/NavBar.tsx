@@ -65,7 +65,7 @@ export default function NavBar() {
           iconActive="/send-active.svg"
         />
         <NavItem
-          href="/w3/dashboard"
+          href="/w3/card"
           label="Card"
           icon="/card.svg"
           iconActive="/card-active.svg"
@@ -75,7 +75,7 @@ export default function NavBar() {
       {/* Account - Desktop */}
       <div className="flex flex-row items-center space-x-4">
         <Link
-          href="/w3/account"
+          href=""
           className="hidden md:flex items-center space-x-2 text-sm font-medium text-gray-500 hover:text-blue-600"
         >
           <Image
@@ -154,12 +154,12 @@ export default function NavBar() {
               icon="/notification.svg"
             />
             <MobileNavItem
-              href="/w3/notification"
+              href="/w3/faq"
               label="FAQ"
               icon="/question-circle.svg"
             />
             <MobileNavItem
-              href="/w3/account"
+              href="/w2/account"
               label="0xf616...7f7e"
               icon="/gbese-icon.svg"
             />

@@ -73,12 +73,14 @@ export default function AccountPage() {
 
         {/* Sign Out */}
         <div className="flex justify-end mt-6">
+          <Link href="/">
           <button className="flex items-center justify-between gap-3 border border-red-500 text-red-600 px-4 py-2 rounded-xl hover:bg-red-50">
             <div className="flex items-center gap-2">
               <Image src="/sign-out.svg" alt="Logout" width={16} height={16} />
               <span className="text-sm font-bold">Sign Out</span>
             </div>
           </button>
+          </Link>
         </div>
       </div>
     </>

@@ -38,7 +38,7 @@ export default function DebtTransferPage() {
               </Button>
               <Link href="/w2/dashboard/debt-transfer/My-Ads">
                 <Button variant="outline" size="sm" className="w-full">
-                  My Ads
+                  Publish Debts
                 </Button>
               </Link>
               <Link href="/w2/dashboard/debt-transfer/Manage-Request">
@@ -50,7 +50,7 @@ export default function DebtTransferPage() {
 
             <Card className="p-6 rounded-xl border">
               <h2 className="text-center font-semibold text-lg">
-                Direct Dept Transfer
+                Direct Debt Transfer
               </h2>
               <p className="text-center text-sm text-gray-500 mb-6">
                 Directly transfer dept

@@ -34,11 +34,11 @@ export default function VirtualCardFaqsPage() {
   }
 
   return (
-    <div className="bg-[#FAFAFA] min-h-screen text-[#2C2C2C]">
+    <div className="bg-black min-h-screen text-[#2C2C2C]">
 
       <div className="max-w-3xl mx-auto px-4 py-10">
         {/* Header */}
-        <h1 className="text-center text-2xl font-semibold mb-1">
+        <h1 className="text-center text-2xl font-semibold text-gray-500 mb-1">
           FAQs for the Gbese
         </h1>
         <h2 className="text-center text-xl text-[#0D60D8] font-medium mb-10">
@@ -59,12 +59,12 @@ export default function VirtualCardFaqsPage() {
               {/* Q and A content */}
               <div className="space-y-2">
                 <div className="flex">
-                  <span className="font-semibold text-black mr-1">Q:</span>
+                  <span className="font-semibold text-white mr-1">Q:</span>
                   <span className="text-[#062B61] font-medium">{faq.question}</span>
                 </div>
                 <div className="flex">
-                  <span className="font-semibold text-black mr-1">A:</span>
-                  <span className="whitespace-pre-line">{faq.answer}</span>
+                  <span className="font-semibold text-white mr-1">A:</span>
+                  <span className="whitespace-pre-line text-gray-400">{faq.answer}</span>
                 </div>
               </div>
             </div>
@@ -72,7 +72,7 @@ export default function VirtualCardFaqsPage() {
         </div>
 
         {/* Footer Hint Box */}
-        <div className="mt-12 bg-[#D6E3FC] rounded-md p-4 flex items-start space-x-4 text-sm text-[#2C2C2C]">
+        <div className="mt-12 bg-[#D6E3FC] rounded-md p-4 flex items-start space-x-4 text-sm text-gray-500">
           <Image
             src="/card-faq.svg"
             alt="Card Icon"
