@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import TopNavbar from '../../../../components/layout/TopNavbar';
 import { useRouter } from 'next/navigation'; // ✅ Updated import
 
 const WithdrawFunds: React.FC = () => {
@@ -13,11 +12,11 @@ const WithdrawFunds: React.FC = () => {
     const router = useRouter();
 
     const handleContinue = () => {
-    router.push('./select-bank/page');
+    router.push('/w2/send/withdraw/select-bank/');
     };
 
     const handleBack1 = () => {
-    router.push('../../send/page');
+    router.push('/w2/send/');
     };
 
 
@@ -45,8 +44,7 @@ const WithdrawFunds: React.FC = () => {
 
   return (
     <>
-      <TopNavbar />
-
+      
       <div className="min-h-screen bg-gray-50 px-4 pt-24">
         <div className="max-w-md mx-auto bg-white p-6 rounded-2xl shadow-sm border">
           <button 
@@ -66,10 +64,12 @@ const WithdrawFunds: React.FC = () => {
             <div className="flex items-center border rounded-md px-3 py-2">
               <input
                 type="text"
-                id="amount"
-                placeholder="₦5,000"
                 value={amount}
-                onChange={(e) => setAmount(e.target.value)}
+                placeholder="₦5,000"
+                onChange={(e) => {
+                  setAmount(e.target.value);
+                  localStorage.setItem("withdrawAmount", e.target.value);
+                }}
                 className="flex-1 bg-transparent focus:outline-none"
               />
               <button
