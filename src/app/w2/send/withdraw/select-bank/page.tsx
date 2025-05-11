@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchBanks, Bank } from '../../../../../lib/accountDetails';
 import { useRouter } from 'next/navigation'; // ✅ Updated import
 import Link from 'next/link';
+import Image from 'next/image';
 
 const SelectBank: React.FC = () => {
   const [banks, setBanks] = useState<Bank[]>([]);
@@ -28,10 +29,21 @@ const SelectBank: React.FC = () => {
       
       <div className="min-h-screen bg-gray-50 px-4 pt-24">
         <div className="max-w-md mx-auto bg-white p-6 rounded-2xl shadow-sm border">
-          <button className="text-sm text-gray-500 mb-4 hover:underline" onClick={handleBack2}>
-            &larr; Back
-          </button>
-
+          <div className="mb-4 flex items-center space-x-2">
+                  <button
+                    className="text-sm text-gray-500 hover:underline flex items-center gap-2"
+                    onClick={handleBack2}
+                  >
+                    <Image
+                      src="/arrow-left.svg"
+                      alt="Back"
+                      width={20}
+                      height={20}
+                      className="inline"
+                    />
+                    <span>Back</span>
+                  </button>
+                </div>
           <h2 className="text-xl font-semibold text-center mb-1">Select a bank</h2>
           <p className="text-sm text-gray-400 text-center mb-6">
             <Link href="/w2/send/withdraw/new-saved-bank/">+ Add a bank account</Link>
@@ -71,10 +83,11 @@ const SelectBank: React.FC = () => {
           ))}
             </div>
           )}
-
-          <button className="w-full mt-6 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition">
+        <div className="flex justify-center mt-4">
+          <button className="bg-blue-600 text-white text-sm px-6 py-2 rounded-md hover:bg-blue-700 transition">
             See More
           </button>
+        </div>
         </div>
       </div>
     </>
