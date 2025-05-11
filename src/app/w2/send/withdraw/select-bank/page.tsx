@@ -14,6 +14,8 @@ const SelectBank: React.FC = () => {
     router.back();
   };
 
+  
+
   useEffect(() => {
     fetchBanks().then((data) => {
       setBanks(data);
@@ -45,11 +47,16 @@ const SelectBank: React.FC = () => {
               className="flex justify-between items-center p-3 border rounded-lg hover:bg-gray-100 cursor-pointer"
               onClick={() => {
                 const amount = localStorage.getItem("withdrawAmount") || "0";
-                router.push(
-                  `/w2/send/withdraw/review-details/?recipient=${encodeURIComponent(
-                    bank.account
-                  )}&accountNumber=${bank.accountNumber}&bankName=${bank.name}&amount=${amount}`
-                );
+                
+                const query = new URLSearchParams({
+                  recipient: `${bank.account}`,
+                  bankName: `${bank.name}`,
+                  accountNumber: `${bank.accountNumber}`,
+                  amount: `${amount}`,
+                }).toString();
+
+                router.push(`/w2/send/withdraw/review-details?${query}`);
+              
               }}
             >
               <div className="flex items-center gap-3">
