@@ -17,8 +17,7 @@ const ReviewDetails: React.FC = () => {
   };
 
   const handleConfirm = () => {
-    // Logic to finalize transfer goes here
-    console.log("Transfer confirmed");
+    router.push('/w2/send/withdraw/success'); // Navigate to success page
   };
 
   return (

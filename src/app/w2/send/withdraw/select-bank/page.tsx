@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { fetchBanks, Bank } from '../../../../../lib/banks';
+import { fetchBanks, Bank } from '../../../../../lib/accountDetails';
 import { useRouter } from 'next/navigation'; // ✅ Updated import
 import Link from 'next/link';
 
@@ -11,7 +11,7 @@ const SelectBank: React.FC = () => {
   const router = useRouter();
 
   const handleBack2 = () => {
-    router.push('/w2/send/withdraw'); // ✅ Works with next/navigation
+    router.back();
   };
 
   useEffect(() => {
