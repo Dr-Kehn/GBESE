@@ -30,7 +30,7 @@ const DebtTransferPage = () => {
             variant="outline"
             onClick={() => handleRoute("/w2/dashboard/debt-transfer/My-Ads")}
           >
-            My Ads
+            Publish Debts
           </Button>
           <Button
             className="bg-blue-600 text-white"
