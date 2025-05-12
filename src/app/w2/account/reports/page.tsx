@@ -10,7 +10,7 @@ export default function StatementReport() {
       <div className="max-w-3xl mx-auto px-4 py-6 space-y-6">
         {/* Back link */}
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <Link href="/w2/account/profile" className="flex items-center gap-1 hover:underline">
+          <Link href="/w2/account" className="flex items-center gap-1 hover:underline">
             <Image src="/arrow-left.svg" alt="Back" width={16} height={16} />
             <span>Back</span>
           </Link>
@@ -29,7 +29,7 @@ export default function StatementReport() {
               <div className="bg-muted p-2 rounded-md">
                 <Image src="/request-statement.svg" alt="Request Icon" width={24} height={24} />
               </div>
-              <span className="font-bold">Request Statement</span>
+              <span className="font-semibold">Request Statement</span>
             </div>
             <Image src="/arrow-right.svg" alt="Chevron" width={16} height={16} />
           </Link>
@@ -42,7 +42,7 @@ export default function StatementReport() {
               <div className="bg-muted p-2 rounded-md">
                 <Image src="/spending-report.svg" alt="Report Icon" width={24} height={24} />
               </div>
-              <span className="font-bold">Spending Report</span>
+              <span className="font-semibold">Spending Report</span>
             </div>
             <Image src="/arrow-right.svg" alt="Chevron" width={16} height={16} />
           </Link>
