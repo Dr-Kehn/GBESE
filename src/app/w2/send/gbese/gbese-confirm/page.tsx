@@ -7,12 +7,21 @@ import { useState } from 'react';
 
 export default function GbeseConfirm() {
   const router = useRouter();
+  const [note, setNote] = useState('');
+  const [amount, setAmount] = useState<number>(10000); // Default editable amount
+  const initialBalance = 40000.12;
 
   const handleSend = () => {
     router.push('/w2/send/gbese/gbese-success');
   };
 
-  const [note, setNote] = useState('');
+  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/[^0-9.]/g, '');
+    setAmount(parseFloat(value || '0'));
+  };
+
+  const remainingBalance = (initialBalance - amount).toFixed(2);
+  const formattedAmount = amount.toLocaleString(undefined, { minimumFractionDigits: 2 });
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-4 bg-[#f9f9f9]">
@@ -28,7 +37,7 @@ export default function GbeseConfirm() {
           {/* Recipient Avatar and Email */}
           <div className="flex flex-col items-center mb-4">
             <Image
-              src="/user.svg" // Adjust path to avatar image
+              src="/user.svg"
               alt="Recipient Avatar"
               width={48}
               height={48}
@@ -37,24 +46,30 @@ export default function GbeseConfirm() {
             <p className="text-sm">Salemonah123@gmail.com</p>
           </div>
 
-          {/* Amount */}
-          <h2 className="text-xl font-bold text-blue-600 mb-4">NGN40,000.12</h2>
+          {/* Editable Amount */}
+          <input
+            type="text"
+            inputMode="decimal"
+            className="w-full text-center text-blue-600 text-xl font-bold bg-transparent border-b border-gray-200 mb-4 focus:outline-none"
+            value={amount}
+            onChange={handleAmountChange}
+          />
 
           {/* Optional Note */}
           <div className="mb-4">
-              <label className="flex items-center gap-1 text-sm text-muted-foreground mb-1">
-                <Image src="/icons/edit.svg" alt="Note" width={14} height={14} />
-                <span>Add a note</span>
-                <span className="text-xs">(Optional)</span>
-              </label>
-              <textarea
-                value={note}
-                onChange={(e) => setNote(e.target.value)}
-                placeholder="Write a short note..."
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                rows={2}
-              />
-            </div>
+            <label className="flex items-center gap-1 text-sm text-muted-foreground mb-1">
+              <Image src="/pen.svg" alt="Note" width={14} height={14} />
+              <span>Add a note</span>
+              <span className="text-xs">(Optional)</span>
+            </label>
+            <textarea
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
+              placeholder="Write a short note..."
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              rows={2}
+            />
+          </div>
 
           {/* Details */}
           <div className="text-left text-sm text-muted-foreground space-y-4 mb-6">
@@ -67,7 +82,7 @@ export default function GbeseConfirm() {
             </div>
             <div className="flex justify-between pl-5">
               <span>Balance</span>
-              <span>40,000.12</span>
+              <span>{initialBalance.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
             </div>
 
             <div className="flex items-center justify-between pt-4">
@@ -78,7 +93,7 @@ export default function GbeseConfirm() {
             </div>
             <div className="flex justify-between pl-5">
               <span>Balance</span>
-              <span>30,000.12</span>
+              <span>{parseFloat(remainingBalance) >= 0 ? remainingBalance : 'Insufficient'}</span>
             </div>
           </div>
 
@@ -86,6 +101,7 @@ export default function GbeseConfirm() {
           <button
             onClick={handleSend}
             className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition mb-3"
+            disabled={parseFloat(remainingBalance) < 0}
           >
             Send Payment
           </button>
