@@ -47,7 +47,7 @@ export default function ReviewDetailsPage() {
         {/* Terms and Conditions */}
         <p className="text-xs text-center text-gray-400 mt-6">
           Powered by Gbese LTD{" "}
-          <Link href="/w2/account/legal/terms" className="text-blue-600 hover:underline">
+          <Link href="/w2/send/withdraw/review-details/terms2" className="text-blue-600 hover:underline">
             Terms and Condition
           </Link>{" "}
           apply
