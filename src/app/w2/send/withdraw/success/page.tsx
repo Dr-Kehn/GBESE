@@ -14,7 +14,7 @@ export default function TransferSuccess() {
         {/* Trophy Icon */}
         <div className="flex justify-center mb-6">
           <Image
-            src="/trophy.svg" // Update this to your actual path
+            src="/Trophy.svg" // Update this to your actual path
             alt="Success"
             width={80}
             height={80}
