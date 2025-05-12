@@ -7,7 +7,6 @@ import Link from 'next/link';
 import BalanceCard from '@/components/dashboard/BalanceCard';
 import KYCNotice from '@/components/dashboard/KYCNotice';
 import Beneficiaries from '@/components/dashboard/Beneficiaries';
-import FiatCryptoToggle from '@/components/dashboard/FiatCryptoToggle';
 import TopNavbar from '@/components/layout/TopNavbar';
 
 export default function Page() {
