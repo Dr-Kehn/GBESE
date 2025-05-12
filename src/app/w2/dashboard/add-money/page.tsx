@@ -6,7 +6,6 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import BalanceCard from '@/components/dashboard/BalanceCard';
 import AddNgnSection from '@/components/dashboard/AddNgnSection';
-import FiatCryptoToggle from '@/components/dashboard/FiatCryptoToggle';
 import TopNavbar from '@/components/layout/TopNavbar';
 
 export default function Page() {

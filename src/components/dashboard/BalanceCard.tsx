@@ -1,10 +1,10 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import FiatCryptoToggle from "./FiatCryptoToggle";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import FiatCryptoToggle from "../FiatCryptoToggle";
 
 export default function BalanceCard() {
   const pathname = usePathname();
