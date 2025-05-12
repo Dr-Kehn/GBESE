@@ -42,7 +42,7 @@ export default function SendPage() {
           </div>
 
           <div className="space-y-4">
-            <Link href="/send/gbese">
+            <Link href="/w2/send/gbese">
               <Card className="hover:shadow-md transition-all cursor-pointer">
                 <CardContent className="flex items-center justify-between px-4 py-3">
                   <div className="flex items-center space-x-3">
@@ -67,7 +67,7 @@ export default function SendPage() {
               </Card>
             </Link>
 
-            <Link href="/send/withdraw">
+            <Link href="/w2/send/withdraw">
               <Card className="hover:shadow-md transition-all cursor-pointer">
                 <CardContent className="flex items-center justify-between px-4 py-3">
                   <div className="flex items-center space-x-3">
