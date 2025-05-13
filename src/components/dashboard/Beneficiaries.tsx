@@ -4,13 +4,13 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 const beneficiaries = [
-  { name: "Dorothy Ubuara", initial: "D" },
-  { name: "Chuka Nwosu", initial: "C" },
-  { name: "Ugo Onuoha", initial: "U" },
-  { name: "Ifeanyi Eze", initial: "I" },
-  { name: "Ngozi Umeh", initial: "N" },
-  { name: "Ahmed Yusuf", initial: "A" },
-  { name: "Tope Akin", initial: "T" },
+  { name: "Dorothy Ubuara", initial: "D", color:"bg-green-600" },
+  { name: "Chuka Nwosu", initial: "C", color:"bg-yellow-400" },
+  { name: "Ugo Onuoha", initial: "U", color:"bg-blue-500" },
+  { name: "Ifeanyi Eze", initial: "I", color:"bg-purple-600" },
+  { name: "Ngozi Umeh", initial: "N", color:"bg-red-600" },
+  { name: "Ahmed Yusuf", initial: "A", color:"bg-yellow-400" },
+  { name: "Tope Akin", initial: "T", color:"bg-blue-500" },
 ];
 
 export default function Beneficiaries() {

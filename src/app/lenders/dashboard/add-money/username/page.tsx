@@ -6,8 +6,8 @@ import Link from "next/link";
 import { toast } from "sonner";
 import { ChevronLeft } from "lucide-react";
 
-import TopNavbar from "@/components/layout/TopNavbar";
-import BalanceCard from "@/components/dashboard/BalanceCard";
+import TopNavbar from "@/components/lenders/nav/TopNavbar";
+import BalanceCard from "@/components/lenders/dashboard/BalanceCard";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -36,7 +36,7 @@ export default function ShareUsernamePage() {
           {/* Back */}
           <div className="w-full max-w-xl mt-6 mb-4 text-sm text-gray-600">
             <Link
-              href="/w2/dashboard/add-money"
+              href="/lenders/dashboard/add-money"
               className="flex items-center gap-1 hover:text-blue-600 transition"
             >
               <ChevronLeft size={16} />
@@ -67,7 +67,7 @@ export default function ShareUsernamePage() {
 
               <Button
                 className="mt-3 w-full max-w-md bg-blue-600 cursor-pointer hover:bg-blue-700"
-                onClick={() => router.push("/w2/dashboard/add-money")}
+                onClick={() => router.push("/lenders/dashboard/add-money")}
               >
                 Done
               </Button>
