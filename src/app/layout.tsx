@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Work_Sans } from "next/font/google";
 import { Toaster } from "sonner";
+import Providers from "@/redux/providers";
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -22,7 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={workSans.className} suppressHydrationWarning={true}>
-        <div> {children}</div>
+        <Providers>
+          {children}
+        </Providers>
 
         <Toaster />
       </body>
