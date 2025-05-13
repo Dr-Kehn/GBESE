@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import TopNavbar from "@/components/layout/TopNavbar";
-import BalanceCard from "@/components/dashboard/BalanceCard";
+import BalanceCard from "@/components/lenders/dashboard/BalanceCard";
 
 const DebtTransferPage = () => {
   const router = useRouter();
@@ -22,44 +22,23 @@ const DebtTransferPage = () => {
         <div className="flex flex-wrap gap-2 mt-6">
           <Button
             variant="outline"
-            size="sm"
-            onClick={() => handleRoute("/w2/dashboard/debt-transfer")}
+            onClick={() => handleRoute("/lenders/dashboard/manage-loan")}
           >
-            Direct Debt Transfer
+            Incoming Request
           </Button>
           <Button
             variant="outline"
-            size="sm"
-            onClick={() => handleRoute("/w2/dashboard/debt-transfer/My-Ads")}
+            onClick={() => handleRoute("/lenders/dashboard/manage-loan/My-Ads")}
           >
-            Publish Debts
+            My Ads
           </Button>
           <Button
             className="bg-blue-600 text-white"
-            size="sm"
             onClick={() =>
-              handleRoute("/w2/dashboard/debt-transfer/Manage-Request")
+              handleRoute("/lenders/dashboard/manage-loan/approved-loans")
             }
           >
-            Manage Request
-          </Button>
-        </div>
-
-        {/* Toggle */}
-        <div className="flex mt-6 space-x-2">
-          <Button
-            variant={activeTab === "incoming" ? "default" : "ghost"}
-            onClick={() =>
-              handleRoute("/w2/dashboard/debt-transfer/Manage-Request")
-            }
-          >
-            Incoming
-          </Button>
-          <Button
-            className="bg-blue-600 text-white"
-            variant={activeTab === "outgoing" ? "default" : "ghost"}
-          >
-            Outgoing
+            Approved Loans
           </Button>
         </div>
 
@@ -68,7 +47,7 @@ const DebtTransferPage = () => {
           <table className="min-w-full text-sm text-left border-collapse">
             <thead className="bg-blue-50 text-gray-700">
               <tr>
-                <th className="px-4 py-3 font-semibold">Receivers Name</th>
+                <th className="px-4 py-3 font-semibold">Borrowers Name</th>
                 <th className="px-4 py-3 font-semibold">Amount</th>
                 <th className="px-4 py-3 font-semibold">Loan ID</th>
                 <th className="px-4 py-3 font-semibold">Status</th>
@@ -79,20 +58,17 @@ const DebtTransferPage = () => {
                 {
                   name: "Dorothy Ubuara",
                   amount: "₦ 40,000",
-                  loanId: "September - January",
-                  status: "Pending",
+                  loanId: "12345AE",
+                 },
+                {
+                  name: "Dorothy Ubuara",
+                  amount: "₦ 40,000",
+                  loanId: "87463HI",
                 },
                 {
                   name: "Dorothy Ubuara",
                   amount: "₦ 40,000",
-                  loanId: "September - January",
-                  status: "Declined",
-                },
-                {
-                  name: "Dorothy Ubuara",
-                  amount: "₦ 40,000",
-                  loanId: "September - January",
-                  status: "Accepted",
+                  loanId: "8HIE8KH",
                 },
               ].map((item, idx) => (
                 <tr key={idx} className="border-t hover:bg-gray-50">
@@ -100,25 +76,20 @@ const DebtTransferPage = () => {
                   <td className="px-4 py-3">{item.amount}</td>
                   <td className="px-4 py-3">{item.loanId}</td>
                   <td className="px-4 py-3">
-                    {item.status === "Pending" && (
-                      <span className="text-gray-500 bg-gray-100 px-3 py-1 rounded-full text-xs">
-                        Pending
-                      </span>
-                    )}
-                    {item.status === "Declined" && (
-                      <span className="text-red-500 border border-red-500 px-3 py-1 rounded-full text-xs">
-                        Declined
-                      </span>
-                    )}
-                    {item.status === "Accepted" && (
-                      <span className="text-blue-500 border border-blue-500 px-3 py-1 rounded-full text-xs">
-                        Accepted
-                      </span>
-                    )}
+                    <Button
+                      variant="outline"
+                      className="text-blue-500 border-blue-500 text-xs px-3 py-1 rounded-full"
+                      onClick={() =>
+                     handleRoute("/lenders/dashboard/manage-loan/loan-summary")
+                      }
+                    >
+                      See more
+                    </Button>
                   </td>
                 </tr>
               ))}
             </tbody>
+
           </table>
         </div>
       </div>

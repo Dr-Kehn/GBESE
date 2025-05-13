@@ -40,7 +40,7 @@ export default function AccountProfile() {
         <div className="">
             <div className="w-full max-w-xl mt-6 mb-4 text-sm text-gray-600">
                 <Link
-                    href="/w2/account"
+                    href="/lenders/account"
                     className="flex items-center gap-1 hover:text-blue-600 transition"
                 >
                     <ChevronLeft size={16} />

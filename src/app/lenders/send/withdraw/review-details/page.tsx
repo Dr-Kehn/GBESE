@@ -9,7 +9,7 @@ export default function ReviewDetailsPage() {
     <div className="flex justify-center items-center min-h-screen px-4">
       <div className="w-full max-w-md border rounded-md bg-white shadow-sm py-8 px-6">
         {/* Back */}
-        <Link href="/w2/send/withdraw/select-bank" className="flex items-center text-sm text-gray-500 hover:text-gray-700 mb-4">
+        <Link href="/lenders/send/withdraw/select-bank" className="flex items-center text-sm text-gray-500 hover:text-gray-700 mb-4">
           <Image src="/arrow-left.svg" alt="Back" width={16} height={16} className="mr-2" />
           Back
         </Link>
@@ -47,7 +47,7 @@ export default function ReviewDetailsPage() {
         {/* Terms and Conditions */}
         <p className="text-xs text-center text-gray-400 mt-6">
           Powered by Gbese LTD{" "}
-          <Link href="/w2/send/withdraw/review-details/terms2">
+          <Link href="/lenders/send/withdraw/review-details/terms2">
             <span className="text-blue-600 hover:underline">Terms and Condition</span>
           </Link>{" "}
           apply
@@ -55,7 +55,7 @@ export default function ReviewDetailsPage() {
 
         {/* Confirm Button */}
         <div className="mt-6 flex justify-center">
-          <Link href="/w2/send/withdraw/success">
+          <Link href="/lenders/send/withdraw/success">
             <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8">
               Confirm
             </Button>
