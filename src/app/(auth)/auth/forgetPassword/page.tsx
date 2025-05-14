@@ -23,7 +23,7 @@ export default function ForgetPassword() {
             className="inline-flex items-center gap-2 text-[#2563EB] text-xs font-semibold border border-[#2563EB] rounded-lg px-4 py-2 mb-10 w-max hover:bg-[#2563EB] hover:text-white transition"
             href="#"
           >
-            <FaArrowLeft  />
+            <FaArrowLeft />
             Back To Login
           </Link>
         </section>
@@ -58,7 +58,7 @@ export default function ForgetPassword() {
               </button>
             </form>
           </section>
-          <section className="hidden md:flex-1 max-w-xl">
+          <section className="hidden md:flex max-w-xl">
             <img
               alt="Illustration of a woman standing and using a smartphone with a large tablet device showing a login screen with email and password fields, office background with shelves and clock"
               className="w-full  h-[400px] rounded-lg"
