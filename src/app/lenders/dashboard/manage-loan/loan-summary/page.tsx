@@ -47,7 +47,7 @@ export default function LoanSummary() {
   return (
     <div className="p-4 sm:p-6 md:p-8 max-w-3xl mx-auto">
       <div className="mb-6 flex items-center space-x-2">
-        <Link href="/w2/dashboard/borrow/manage-loan" className="flex items-center space-x-1 text-sm text-gray-600 hover:text-gray-800">
+        <Link href="/lenders/dashboard/manage-loan/approved-loans" className="flex items-center space-x-1 text-sm text-gray-600 hover:text-gray-800">
           <Image src="/arrow-left.svg" alt="Back" width={16} height={16} />
           <span>Back</span>
         </Link>
