@@ -78,7 +78,7 @@ export default function LenderDashboardBody() {
 
         <div className="space-y-3">
           {recentTransactions.map((tx, idx) => (
-            <Card key={idx} className="flex items-center justify-between px-4 py-3">
+            <Card key={idx} className="flex justify-between px-4 py-3">
               <div className="flex items-center gap-3">
                 <Image
                   src={tx.image}
