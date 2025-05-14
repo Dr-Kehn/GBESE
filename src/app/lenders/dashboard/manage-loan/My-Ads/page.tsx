@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import TopNavbar from "@/components/layout/TopNavbar";
-import BalanceCard from "@/components/dashboard/BalanceCard";
+import BalanceCard from "@/components/lenders/dashboard/BalanceCard";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 export default function MyAdsPage() {
