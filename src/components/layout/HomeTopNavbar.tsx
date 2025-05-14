@@ -25,19 +25,21 @@ export default function HomeTopNavbar() {
             <li className="text-[#2a5db0] cursor-pointer select-none font-semibold">
               About Us
             </li>
-            <li className="text-[#9ca6b8] cursor-pointer select-none">FAQ</li>
+            <li className="text-[#9ca6b8] cursor-pointer select-none">
+              <Link href={"/faq"}>FAQ</Link>
+            </li>
           </ul>
         </div>
         <div className=" space-x-2 ml-6 hidden md:flex">
-          <Link href="/w2/dashboard">
-          <button className="px-4 py-1.5 border border-[#2a5db0] rounded text-[#2a5db0] text-xs font-semibold flex items-center justify-center">
-            <i className="far fa-file-alt mr-1"></i> Sign in
-          </button>
+          <Link href="/auth/login">
+            <button className="px-4 py-1.5 border border-[#2a5db0] rounded text-[#2a5db0] text-xs font-semibold flex items-center justify-center">
+              <i className="far fa-file-alt mr-1"></i> Sign in
+            </button>
           </Link>
-          <Link href="/w2/dashboard">
-          <button className="px-4 py-1.5 border border-[#2a5db0] rounded text-[#2a5db0] text-xs font-semibold flex items-center justify-center">
-            <i className="far fa-file-alt mr-1"></i> Sign Up
-          </button>
+          <Link href="/auth/sign-up">
+            <button className="px-4 py-1.5 border border-[#2a5db0] rounded text-[#2a5db0] text-xs font-semibold flex items-center justify-center">
+              <i className="far fa-file-alt mr-1"></i> Sign Up
+            </button>
           </Link>
         </div>
 
@@ -88,14 +90,14 @@ export default function HomeTopNavbar() {
             {/* Auth Buttons */}
             <div className="mt-6 flex flex-col space-y-3">
               <Link href="/w2/dashboard">
-              <button className="w-full px-4 py-2 border border-[#2a5db0] rounded text-[#2a5db0] text-xs font-semibold flex items-center justify-center">
-                <i className="far fa-file-alt mr-1"></i> Sign in
-              </button>
+                <button className="w-full px-4 py-2 border border-[#2a5db0] rounded text-[#2a5db0] text-xs font-semibold flex items-center justify-center">
+                  <i className="far fa-file-alt mr-1"></i> Sign in
+                </button>
               </Link>
               <Link href="/w2/dashboard">
-              <button className="w-full px-4 py-2 border border-[#2a5db0] rounded text-[#2a5db0] text-xs font-semibold flex items-center justify-center">
-                <i className="far fa-file-alt mr-1"></i> Sign Up
-              </button>
+                <button className="w-full px-4 py-2 border border-[#2a5db0] rounded text-[#2a5db0] text-xs font-semibold flex items-center justify-center">
+                  <i className="far fa-file-alt mr-1"></i> Sign Up
+                </button>
               </Link>
             </div>
           </div>
