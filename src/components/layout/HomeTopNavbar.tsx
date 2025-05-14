@@ -89,12 +89,12 @@ export default function HomeTopNavbar() {
 
             {/* Auth Buttons */}
             <div className="mt-6 flex flex-col space-y-3">
-              <Link href="/w2/dashboard">
+              <Link href="/auth/login">
                 <button className="w-full px-4 py-2 border border-[#2a5db0] rounded text-[#2a5db0] text-xs font-semibold flex items-center justify-center">
                   <i className="far fa-file-alt mr-1"></i> Sign in
                 </button>
               </Link>
-              <Link href="/w2/dashboard">
+              <Link href="/auth/sign-up">
                 <button className="w-full px-4 py-2 border border-[#2a5db0] rounded text-[#2a5db0] text-xs font-semibold flex items-center justify-center">
                   <i className="far fa-file-alt mr-1"></i> Sign Up
                 </button>
