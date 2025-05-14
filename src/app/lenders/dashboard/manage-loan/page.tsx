@@ -57,7 +57,7 @@ export default function ManageRequestPage() {
                   My Ads
                 </Button>
               </Link>
-              <Link href="/lenders/dashboard/mange-loan/approved-loans">
+              <Link href="/lenders/dashboard/manage-loan/approved-loans">
               <Button variant="outline" size="sm" className="w-full">
                 Approved Loans
               </Button>
