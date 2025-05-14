@@ -46,7 +46,7 @@ export default function MyAdsPage() {
                 >
                   My Ads
                 </Button>
-              <Link href="/w2/dashboard/manage-loan/approved-loans">
+              <Link href="/lenders/dashboard/manage-loan/approved-loans">
                 <Button variant="outline" size="sm" className="w-full">
                   Approved Loans
                 </Button>
