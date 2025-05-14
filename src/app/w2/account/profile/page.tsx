@@ -128,7 +128,7 @@ export default function AccountProfile() {
       </div>
 
       {/* Delete Account */}
-      <div className="flex justify-between border rounded-xl p-3 space-y-2">
+      <div className="flex justify-between border rounded-xl p-3 pb-4 space-y-2">
         <div>
             <p className="text-red-600 font-bold">Delete Account:</p>
             <p className="text-sm font-bold">Deactivate your gbese account</p>

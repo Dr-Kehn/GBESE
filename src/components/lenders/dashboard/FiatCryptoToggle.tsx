@@ -11,7 +11,7 @@ const FiatCryptoToggle = () => {
 
   const handleFiatClick = () => {
     if (isCrypto) {
-      router.push('/w2/dashboard'); // Navigate to Fiat
+      router.push('/lenders/dashboard'); // Navigate to Fiat
     }
   };
 
@@ -22,7 +22,7 @@ const FiatCryptoToggle = () => {
   };
 
   return (
-    <div className="flex gap-2 shadow-2xl bg-[#141414] rounded-[10px] self-end">
+    <div className="flex gap-2 shadow-2xl bg-[#F5F5F5] rounded-[10px] self-end">
       <Button
         className={!isCrypto ? 'border-0 outline-0 text-white bg-[#0d60d8] w-[50%]' : 'border-0 outline-0 bg-inherit text-[#0d60d8] w-[50%]'}
         variant={!isCrypto ? 'default' : 'outline'}

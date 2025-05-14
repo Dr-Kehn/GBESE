@@ -42,7 +42,7 @@ export default function MyAdsPage() {
                   size="sm"
                   className="text-white bg-blue-600"
                 >
-                  My Ads
+                  Publish Debts
                 </Button>
               <Link href="/w2/dashboard/debt-transfer/Manage-Request">
                 <Button variant="outline" size="sm" className="w-full">
@@ -53,9 +53,9 @@ export default function MyAdsPage() {
 
             {/* My Ads Form */}
             <Card className="p-6 rounded-xl border">
-              <h2 className="text-center font-semibold text-lg">My Ads</h2>
+              <h2 className="text-center font-semibold text-lg">Publish Debts</h2>
               <p className="text-center text-sm text-gray-500 mb-6">
-                Post your Ad
+                Publish your Debts
               </p>
 
               <div className="space-y-4">
@@ -82,7 +82,7 @@ export default function MyAdsPage() {
                       className="w-full bg-blue-600 text-white"
                       onClick={handlePostAd}
                     >
-                      Post Ad
+                      Publish Debt
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="text-center text-lg font-semibold">

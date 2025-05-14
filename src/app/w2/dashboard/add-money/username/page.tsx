@@ -66,7 +66,7 @@ export default function ShareUsernamePage() {
               </Button>
 
               <Button
-                className="mt-3 w-full max-w-md"
+                className="mt-3 w-full max-w-md bg-blue-600 cursor-pointer hover:bg-blue-700"
                 onClick={() => router.push("/w2/dashboard/add-money")}
               >
                 Done

@@ -56,7 +56,7 @@ export default function ManageRequestPage() {
               </Link>
               <Link href="/w2/dashboard/debt-transfer/My-Ads">
                 <Button variant="outline" size="sm" className="w-full">
-                  My Ads
+                  Publish Debts
                 </Button>
               </Link>
               <Button className="bg-blue-600 text-white" size="sm">

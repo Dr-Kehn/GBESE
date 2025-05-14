@@ -22,18 +22,21 @@ const DebtTransferPage = () => {
         <div className="flex flex-wrap gap-2 mt-6">
           <Button
             variant="outline"
+            size="sm"
             onClick={() => handleRoute("/w2/dashboard/debt-transfer")}
           >
             Direct Debt Transfer
           </Button>
           <Button
             variant="outline"
+            size="sm"
             onClick={() => handleRoute("/w2/dashboard/debt-transfer/My-Ads")}
           >
-            My Ads
+            Publish Debts
           </Button>
           <Button
             className="bg-blue-600 text-white"
+            size="sm"
             onClick={() =>
               handleRoute("/w2/dashboard/debt-transfer/Manage-Request")
             }
