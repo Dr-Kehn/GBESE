@@ -8,7 +8,7 @@ export default function DebtorProfile() {
   return (
     <section className="p-4 sm:p-8 max-w-4xl mx-auto">
       {/* Back Navigation */}
-      <div className="flex items-center gap-2 text-blue-600 mb-6">
+      <div className="flex items-center gap-2 mb-6">
         <Link href="/lenders/dashboard/manage-loan" className="flex items-center gap-2">
           <Image
             src="/arrow-left.svg"
@@ -24,7 +24,7 @@ export default function DebtorProfile() {
       <Card className="w-full rounded-xl p-6 flex flex-col items-center text-center">
         {/* Avatar + Name */}
         <Image
-          src="/user.svg"
+          src="/account-image.png"
           alt="User Avatar"
           width={80}
           height={80}

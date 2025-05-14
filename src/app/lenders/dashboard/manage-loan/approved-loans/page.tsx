@@ -38,7 +38,7 @@ const DebtTransferPage = () => {
           </Button>
           <Button
             size="sm"
-            className="bg-blue-600 text-white"
+            className="bg-blue-600 text-white w-full"
             onClick={() =>
               handleRoute("/lenders/dashboard/manage-loan/approved-loans")
             }
