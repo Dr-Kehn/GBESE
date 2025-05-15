@@ -1,40 +1,23 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 
 const FiatCryptoToggle = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const isCrypto = pathname.includes('/w3');
 
-  const [originRole, setOriginRole] = useState<string | null>(null);
-
-  // On first render, detect and store the origin role
-  useEffect(() => {
-    if (!localStorage.getItem('origin-role')) {
-      if (pathname.startsWith('/w2')) {
-        localStorage.setItem('origin-role', 'w2');
-        setOriginRole('w2');
-      } else if (pathname.startsWith('/lenders')) {
-        localStorage.setItem('origin-role', 'lenders');
-        setOriginRole('lenders');
-      }
-    } else {
-      setOriginRole(localStorage.getItem('origin-role'));
-    }
-  }, [pathname]);
+  const isCrypto = pathname.includes('/w3/dashboard');
 
   const handleFiatClick = () => {
-    if (isCrypto && originRole) {
-      router.push(`/${originRole}/dashboard`);
+    if (isCrypto) {
+      router.back(); // Go back to previous page (assumes it was /w2 or /lenders)
     }
   };
 
   const handleCryptoClick = () => {
     if (!isCrypto) {
-      router.push('/w3/dashboard');
+      router.push('/w3/dashboard'); // Navigate to Crypto
     }
   };
 
