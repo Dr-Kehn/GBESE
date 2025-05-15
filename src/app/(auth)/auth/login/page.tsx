@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { FaSpinner } from "react-icons/fa";
 
 const Login = () => {
-  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -17,7 +17,7 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
     const formData = {
-      username: userName,
+      email,
       password,
     };
     try {
@@ -25,8 +25,8 @@ const Login = () => {
       const {data} = response
       if (data.apiData.user.role == "user") {
         router.push("/w2/dashboard");
-      }else {
-        router.push("/lenders");
+      }else {        
+        router.push("/lenders/dashboard");
       }
       setIsLoading(false);
     } catch (error: any) {
@@ -85,18 +85,18 @@ const Login = () => {
                 <div className="flex flex-col space-y-1">
                   <label
                     className="font-semibold text-black text-sm"
-                    htmlFor="username"
+                    htmlFor="email"
                   >
                     Username
                   </label>
                   <input
                     className="border border-[#2563eb] rounded-md px-4 py-3 text-gray-400 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                    id="username"
-                    placeholder="John Doe"
-                    type="text"
+                    id="email"
+                    placeholder="John@test.com"
+                    type="email"
                     required
-                    value={userName}
-                    onChange={(e) => setUserName(e.target.value)}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
                 <div className="flex flex-col space-y-1">

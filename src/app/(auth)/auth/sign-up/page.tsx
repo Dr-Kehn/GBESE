@@ -42,7 +42,7 @@ const SignUP = () => {
       password,
       phoneNumber,
       email,
-      // role: registerAs,
+      role: registerAs,
     };
 
     try {
