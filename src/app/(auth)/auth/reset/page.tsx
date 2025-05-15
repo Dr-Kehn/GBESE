@@ -1,23 +1,28 @@
-import React from 'react'
+"use client";
+
+import Link from "next/link";
+import React from "react";
 
 export default function Reset() {
   return (
     <section className="bg-[#fafafa] min-h-screen flex flex-col">
       <header className="p-10">
         <div className="flex items-center space-x-3">
-          <img
-            alt="Gbese logo blue icon with three stylized shapes"
-            className="w-[100px]"
-            height="40"
-            src="/image/Logo.png"
-            width="40"
-          />
+          <Link href={"/"}>
+            <img
+              alt="Gbese logo blue icon with three stylized shapes"
+              className="w-[100px]"
+              height="40"
+              src="/image/Logo.png"
+              width="40"
+            />
+          </Link>
         </div>
       </header>
       <section className="flex flex-1 justify-center items-center px-4 md:px-16 lg:px-24 xl:px-32 2xl:px-40">
         <section
-          className="bg-white rounded-2xl p-10 max-w-md w-full drop-shadow-sm"
-          style={{ boxShadow: '0 0 10px rgb(0 0 0 / 0.03)' }}
+          className="bg-white rounded-2xl p-10 mx-auto max-w-md w-full drop-shadow-sm"
+          style={{ boxShadow: "0 0 10px rgb(0 0 0 / 0.03)" }}
         >
           <h1 className="font-extrabold text-xl text-[#111827] mb-3">
             Set A Password
@@ -67,14 +72,14 @@ export default function Reset() {
             </button>
           </form>
         </section>
-        <section className="hidden md:flex flex-1 justify-center items-center pl-16">
+        <section className="hidden lg:flex flex-1 justify-center items-center pl-16">
           <img
             alt="Illustration of a woman standing and using a smartphone with a large tablet device showing a login screen with email and password fields, office background with shelves and clock"
-            className="w-full  h-[400px] rounded-lg"
+            className="w-200 h-[400px] rounded-lg"
             draggable="false"
             height="500"
             src="/image/login.png"
-            width="400"
+            width="350"
           />
         </section>
       </section>
