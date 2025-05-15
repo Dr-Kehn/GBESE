@@ -178,7 +178,7 @@ export default function DebtorsMarketplacePage() {
                     <td className="px-6 py-4 whitespace-nowrap">{debtor.report}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <Button
-                        className="text-white bg-[#1E58FF] hover:bg-[#174edb]"
+                        className="bg-gray-400"
                       >
                         Pay Debt
                       </Button>
