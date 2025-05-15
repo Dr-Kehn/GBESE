@@ -1,8 +1,40 @@
 "use client";
+import axios from "axios";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import { FaSpinner } from "react-icons/fa";
 
 const Login = () => {
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const router = useRouter();
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+    const formData = {
+      username: userName,
+      password,
+    };
+    try {
+      const response = await axios.post(`/api/login`, formData);
+      const {data} = response
+      if (data.apiData.user.role == "user") {
+        router.push("/w2/dashboard");
+      }else {
+        router.push("/lenders");
+      }
+      setIsLoading(false);
+    } catch (error: any) {
+      toast.error(error?.response?.data?.message);
+      setIsLoading(false);      
+    }
+  };
+
   return (
     <section className="bg-[#f9fafb] min-h-screen flex flex-col">
       <header className="flex justify-between items-center px-8 py-6 bg-[#f9fafb]">
@@ -26,7 +58,7 @@ const Login = () => {
           </button>
         </Link>
       </header>
-      <section className="flex flex-col flex-1  py-10 relative w-full mt-10 gap-20">
+      <section className="flex flex-col flex-1  py-10 relative w-full mt-4 gap-20">
         {/* absolute left-4 md:left-[10vw] top-1  */}
         <section className="flex flex-col md:flex-row justify-center flex-1 px-2 md:px-16 py-10 gap-10 md:gap-20 max-w-[1200px] mx-auto w-full">
           <section className="mx-auto">
@@ -39,26 +71,32 @@ const Login = () => {
               </p>
             </div>
             <div className="flex flex-col space-y-2 max-w-md bg-white p-8 rounded-xl ">
-              <form className="flex flex-col mt-6 space-y-6">
+              <form
+                className="flex flex-col mt-6 space-y-6"
+                onSubmit={onSubmit}
+              >
                 <h1 className="font-extrabold text-2xl text-black">
                   Sign In to Gbese
                 </h1>
                 <p className="text-gray-500 text-base leading-relaxed">
-                  To sign in, please type in the email address linked to your
-                  Gbese account
+                  To sign in, please type in the Username linked to your Gbese
+                  account
                 </p>
                 <div className="flex flex-col space-y-1">
                   <label
                     className="font-semibold text-black text-sm"
-                    htmlFor="email"
+                    htmlFor="username"
                   >
-                    Email Address
+                    Username
                   </label>
                   <input
                     className="border border-[#2563eb] rounded-md px-4 py-3 text-gray-400 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                    id="email"
-                    placeholder="example@gmail.com"
-                    type="email"
+                    id="username"
+                    placeholder="John Doe"
+                    type="text"
+                    required
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
                   />
                 </div>
                 <div className="flex flex-col space-y-1">
@@ -73,6 +111,9 @@ const Login = () => {
                     id="password"
                     placeholder="************"
                     type="password"
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
                 <p className="text-gray-400 text-sm">
@@ -85,15 +126,15 @@ const Login = () => {
                   </Link>
                 </p>
                 <button
-                  className="bg-[#2563eb] text-white rounded-md py-3 px-10 w-full md:w-max text-base font-normal hover:bg-[#1e40af] transition"
+                  className="bg-[#2563eb] cursor-pointer text-white rounded-md py-3 px-10 w-full md:w-max text-base font-normal hover:bg-[#1e40af] transition"
                   type="submit"
                 >
-                  Sign In
+                  {isLoading ? <FaSpinner className="animate-spin"/> : "Sign In"}
                 </button>
                 <p className="text-gray-400 text-sm max-w-[320px]">
                   If you don’t have a gbese account, download the app
-                  <a className="text-[#2563eb] hover:underline" href="#">
-                    here
+                  <a className=" hover:underline mx-1" href="#">
+                    <span className="text-[#2563eb]">here</span>
                   </a>
                   and open an account in a few minutes
                 </p>

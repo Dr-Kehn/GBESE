@@ -8,28 +8,28 @@ export async function POST(req: Request, res: NextRequest) {
     Accept: "application/json",
   };
 
-  const resData = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/login`, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-  });
+  const resData = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/users/login`,
+    {
+      method: "POST",
+      headers,
+      body: JSON.stringify(body),
+    }
+  );
 
   const apiData = await resData.json();
 
+  
   if (apiData.error) {
     const response = {
-      message: apiData.error.message?.message || "An error occurred",
+      message: apiData.error || "An error occurred",
     };
     return new Response(JSON.stringify(response), {
-      status: apiData.error.statusCode,
+      status: 400,
     });
   }
   
-  const { data } = apiData;
-  const { accessToken } = data;
-  const { error } = apiData;
-  const { status } = apiData;
-
+  const { accessToken } = apiData;
 
   const serialized = serialize("token", accessToken, {
     httpOnly: true,
@@ -39,22 +39,11 @@ export async function POST(req: Request, res: NextRequest) {
     path: `/`,
   });
 
-
-  if (status === "success") {
-    const response = {
-        data,
-    };
-    return new Response(JSON.stringify(response), {
-      status: 200,
-      headers: { "Set-cookie": serialized },
-    });
-  } else {
-    const response = {
-      message: error?.message?.message,
-    };
-
-    return new Response(JSON.stringify(response), {
-      status: 400,
-    });
-  }
+  const response = {
+    apiData,
+  };
+  return new Response(JSON.stringify(response), {
+    status: 200,
+    headers: { "Set-cookie": serialized },
+  });
 }
