@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa";
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function HomeTopNavbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +13,9 @@ export default function HomeTopNavbar() {
     <nav className="w-full bg-[#E7EFFB] px-4 sm:px-6 lg:px-20 py-4 relative z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <Image src="/image/Logo.png" alt="Logo" width={100} height={100} />
+        <Link href={"/"}>
+          <Image src="/image/Logo.png" alt="Logo" width={100} height={100} />
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-6">
@@ -84,17 +86,23 @@ export default function HomeTopNavbar() {
               <li className="text-[#2a5db0] cursor-pointer select-none font-semibold">
                 About Us
               </li>
-              <li className="text-[#9ca6b8] cursor-pointer select-none">FAQ</li>
+              <Link href="/faq">
+                <li className="text-[#9ca6b8] cursor-pointer select-none"
+                onClick={() => setIsOpen(false)}
+                >
+                  FAQ
+                </li>
+              </Link>
             </ul>
 
             {/* Auth Buttons */}
             <div className="mt-6 flex flex-col space-y-3">
-              <Link href="/w2/dashboard">
+              <Link href="/auth/login">
                 <button className="w-full px-4 py-2 border border-[#2a5db0] rounded text-[#2a5db0] text-xs font-semibold flex items-center justify-center">
                   <i className="far fa-file-alt mr-1"></i> Sign in
                 </button>
               </Link>
-              <Link href="/w2/dashboard">
+              <Link href="/auth/sign-up">
                 <button className="w-full px-4 py-2 border border-[#2a5db0] rounded text-[#2a5db0] text-xs font-semibold flex items-center justify-center">
                   <i className="far fa-file-alt mr-1"></i> Sign Up
                 </button>

@@ -22,16 +22,15 @@ const [hideCode, setHideCode] = React.useState(true);
       </header>
       <section className="flex flex-col flex-1  py-10 relative w-full mt-5 gap-20">
         <section className="absolute left-4 md:left-[1vw] top-[-3em] pb-10 ">
-          <Link
-            className="inline-flex items-center gap-2 text-[#2563EB] text-xs font-semibold border border-[#2563EB] rounded-lg px-4 py-2 mb-10 w-max hover:bg-[#2563EB] hover:text-white transition"
-            href="#"
-          >
-            <FaArrowLeft />
-            Back To Login
+        <Link href="/auth/login">
+            <span className="text-[#2563EB] inline-flex items-center gap-2  text-xs font-semibold border border-[#2563EB] rounded-lg px-4 py-2 mb-10 w-max hover:bg-[#2563EB] hover:text-white transition">
+              <FaArrowLeft />
+              Back To Login
+            </span>
           </Link>
         </section>
         <section className="flex flex-col md:flex-row md:items-center md:justify-between gap-12 md:gap-24 max-w-7xl w-full md:mx-auto">
-          <section className="bg-white rounded-2xl p-8 md:p-12 max-w-lg w-full drop-shadow-sm">
+          <section className="bg-white rounded-2xl mx-auto p-8 md:p-12 max-w-lg w-full drop-shadow-sm">
             <h1 className="text-2xl font-extrabold text-gray-900 mb-2">
               Verify Code
             </h1>
@@ -81,7 +80,7 @@ const [hideCode, setHideCode] = React.useState(true);
               </button>
             </form>
           </section>
-          <section className="hidden md:flex max-w-xl">
+          <section className="hidden lg:flex max-w-xl">
             <img
               alt="Illustration of a woman standing and using a smartphone with a large tablet device showing a login screen with email and password fields, office background with shelves and clock"
               className="w-full  h-[400px] rounded-lg"
