@@ -22,8 +22,12 @@ const Login = () => {
     };
     try {
       const response = await axios.post(`/api/login`, formData);
-      console.log("response from form:", response);
-      router.push("/w2/dashboard");
+      const {data} = response
+      if (data.apiData.user.role == "user") {
+        router.push("/w2/dashboard");
+      }else {
+        router.push("/lenders");
+      }
       setIsLoading(false);
     } catch (error: any) {
       toast.error(error?.response?.data?.message);
