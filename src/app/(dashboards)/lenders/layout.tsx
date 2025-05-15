@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "../globals.css";
+import "../../globals.css";
 import { Work_Sans } from "next/font/google";
 import { Toaster } from 'sonner';
 import TopNavbar from "@/components/lenders/nav/TopNavbar";
