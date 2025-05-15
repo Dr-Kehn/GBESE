@@ -129,20 +129,6 @@ const SignUP = () => {
               />
             </div>
             <div className="flex flex-col">
-              <label className="text-sm text-gray-700 mb-1" htmlFor="bvn">
-                <span className="text-red-600">*</span>
-                Bank Verification Number
-              </label>
-              <input
-                className="border border-blue-600 rounded-md px-4 py-3 placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
-                id="bvn"
-                name="bvn"
-                placeholder="00000000000000"
-                required
-                type="text"
-              />
-            </div>
-            <div className="flex flex-col">
               <label
                 className="text-sm text-gray-700 mb-1"
                 htmlFor="registerAs"
