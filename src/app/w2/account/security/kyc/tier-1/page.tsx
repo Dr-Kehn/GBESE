@@ -56,7 +56,7 @@ export default function Tier2Page() {
               maxLength={11}
               onChange={(e) => {
                 setError('')
-                setNin(e.target.value)
+                setBvn(e.target.value)
               }}
             />
             {error && <p className="text-sm text-red-500">{error}</p>}
