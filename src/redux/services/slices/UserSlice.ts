@@ -19,7 +19,7 @@ interface IUserResponse {
 const userApiConfig = api.enhanceEndpoints({ addTagTypes: ["Users"] });
 const userApi = userApiConfig.injectEndpoints({
   endpoints: (builder) => ({
-    getCurrentUser: builder.query<IUserResponse, IUserResponse>({
+    getCurrentUser: builder.query<IUserResponse, null>({
       query: () => ({
         url: `/users/user`,
         method: "GET",

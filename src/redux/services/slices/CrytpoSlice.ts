@@ -11,7 +11,7 @@ const cryptoApi = cryptoApiConfig.injectEndpoints({
   endpoints: (builder) => ({
     internalTransfer: builder.mutation({
       query: (body) => ({
-        url: "/transfer/internal",
+        url: "/crypto/transfer/internal",
         method: "POST",
         body,
       }),
@@ -20,14 +20,14 @@ const cryptoApi = cryptoApiConfig.injectEndpoints({
 
     externalTransfer: builder.mutation({
       query: (body) => ({
-        url: "/transfer/external",
+        url: "/crypto/transfer/external",
         method: "POST",
         body,
       }),
       invalidatesTags: ["Crypto"],
     }),
 
-    getUserTokenBalances: builder.query<ICryptoBalance, ICryptoBalance>({
+    getUserTokenBalances: builder.query<ICryptoBalance, null>({
       query: () => ({
         url: `/crypto/balace`,
         method: "GET",
