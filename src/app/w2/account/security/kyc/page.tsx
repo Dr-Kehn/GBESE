@@ -6,8 +6,9 @@ export default function KYCPage() {
   const tiers = [
     {
       title: 'Tier 1',
-      isCurrent: true,
+      isCurrent: false,
       values: ['₦ 20,000.00', '₦ 150,000.00', '₦ 50,000.00'],
+      route: 'w2/account/security/kyc/tier-1',
     },
     {
       title: 'Tier 2',
