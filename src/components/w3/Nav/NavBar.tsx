@@ -5,10 +5,12 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
+import { useLoggedInUser } from "@/hooks/useLoggedInUser";
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const {userData, userRefetching} = useLoggedInUser()  
 
   // Check window size on mount and resize
   useEffect(() => {
@@ -84,7 +86,7 @@ export default function NavBar() {
             width={20}
             height={20}
           />
-          <span>0xf616...7f7e</span>
+          <span>{userData?.walletAddress?.slice(0, 12)}..</span>
           <div className="w-0.5 h-5 bg-gray-400"></div>
         </Link>
 
@@ -160,7 +162,7 @@ export default function NavBar() {
             /> */}
             <MobileNavItem
               href="/w2/account"
-              label="0xf616...7f7e"
+              label={userData?.walletAddress}
               icon="/gbese-icon.svg"
             />
           </div>

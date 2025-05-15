@@ -3,6 +3,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const MOBILE_BREAKPOINT = 1000;
 
@@ -51,5 +52,5 @@ export function useIsMobile() {
 
 export const copyToClipboard = (walletAddress: string) => {
   navigator.clipboard.writeText(walletAddress);
-  alert("Address copied to clipboard!");
+  toast.success("Address copied to clipboard!");
 };
