@@ -106,7 +106,6 @@ export default function MarketplacePage() {
                     <th className="px-6 py-3">Price</th>
                     <th className="px-6 py-3">Payment Duration</th>
                     <th className="px-6 py-3">Interest Rate</th>
-                    <th className="px-6 py-3">Action</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
@@ -116,14 +115,6 @@ export default function MarketplacePage() {
                       <td className="px-6 py-4 whitespace-nowrap">{lender.price}</td>
                       <td className="px-6 py-4 whitespace-nowrap">{lender.duration}</td>
                       <td className="px-6 py-4 whitespace-nowrap">{lender.rate}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                          <Button
-                            className="bg-blue-600 border text-white hover:bg-blue-700 hover:text-white transition-colors"
-                            variant="outline"
-                          >
-                            Borrow Money
-                          </Button>
-                      </td>
                     </tr>
                   ))}
                 </tbody>
