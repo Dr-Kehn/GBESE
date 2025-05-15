@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import "../globals.css";
+import "./globals.css";
 import { Work_Sans } from "next/font/google";
-import HomeTopNavbar from "@/components/layout/HomeTopNavbar";
-import Footer from "@/components/Home/Footer";
+import Providers from "@/redux/providers";
+import { Toaster } from "react-hot-toast";
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -23,9 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={workSans.className} suppressHydrationWarning={true}>
-        <HomeTopNavbar />
-        {children}
-        <Footer />
+        <Providers>
+          {children}
+        </Providers>
+        <Toaster />
       </body>
     </html>
   );

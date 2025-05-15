@@ -1,12 +1,45 @@
-'use client'
+"use client";
+import axios from "axios";
 import Link from "next/link";
-import React from "react";
-import { FaArrowLeft, FaEye, FaEyeSlash} from "react-icons/fa";
+import React, { useState } from "react";
+import { FaArrowLeft, FaEye, FaEyeSlash, FaSpinner } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import { clearUserEmailForm } from "@/redux/services/userEmailSlice";
+import toast from "react-hot-toast";
 
 export default function verifyOTP() {
+  const [hideCode, setHideCode] = React.useState(true);
+  const [otp, setOtp] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const { email } = useSelector((state: RootState) => state.userEmail);
 
-const [hideCode, setHideCode] = React.useState(true);
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
 
+    const formData = {
+      otp,
+      email,
+    };
+
+    try {
+      console.log("formdata:", formData);
+      const response = await axios.post(`/api/verify-email`, formData);
+      console.log("response from form:", response);
+      toast.success("Email Verified");
+      dispatch(clearUserEmailForm());
+      router.push("/auth/login");
+    } catch (error: any) {
+      toast.error(error?.response?.data?.message || "An error occurred");
+    } finally {
+      setIsLoading(false);
+    }
+  };
   return (
     <section className="bg-[#F9FAFB] min-h-screen flex flex-col p-8 md:p-16">
       <header className="mb-20">
@@ -22,7 +55,7 @@ const [hideCode, setHideCode] = React.useState(true);
       </header>
       <section className="flex flex-col flex-1  py-10 relative w-full mt-5 gap-20">
         <section className="absolute left-4 md:left-[1vw] top-[-3em] pb-10 ">
-        <Link href="/auth/login">
+          <Link href="/auth/login">
             <span className="text-[#2563EB] inline-flex items-center gap-2  text-xs font-semibold border border-[#2563EB] rounded-lg px-4 py-2 mb-10 w-max hover:bg-[#2563EB] hover:text-white transition">
               <FaArrowLeft />
               Back To Login
@@ -37,8 +70,11 @@ const [hideCode, setHideCode] = React.useState(true);
             <p className="text-gray-600 text-sm mb-6">
               An authentication code has been sent to your email.
             </p>
-            <form>
-              <label htmlFor="code" className="block text-gray-700 text-sm mb-1">
+            <form onSubmit={onSubmit}>
+              <label
+                htmlFor="code"
+                className="block text-gray-700 text-sm mb-1"
+              >
                 Enter Code
               </label>
               <div className="relative">
@@ -46,37 +82,43 @@ const [hideCode, setHideCode] = React.useState(true);
                   id="code"
                   name="code"
                   type={hideCode ? "password" : "text"}
-                  value="7789BM6X"
+                  value={otp}
                   className="w-full border border-gray-300 rounded-md py-2 pr-10 pl-3 text-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
                   autoComplete="off"
+                  onChange={(e) => setOtp(e.target.value)}
                 />
                 <span className="absolute inset-y-0 right-3 flex items-center text-gray-600 cursor-pointer">
-                 {
-                    hideCode ? (
-                      <FaEye
-                        className=""
-                        onClick={() => setHideCode(!hideCode)}
-                      />
-                    ) : (
-                      <FaEyeSlash
-                        className=""
-                        onClick={() => setHideCode(!hideCode)}
-                      />
-                    )
-                 }
+                  {hideCode ? (
+                    <FaEye
+                      className=""
+                      onClick={() => setHideCode(!hideCode)}
+                    />
+                  ) : (
+                    <FaEyeSlash
+                      className=""
+                      onClick={() => setHideCode(!hideCode)}
+                    />
+                  )}
                 </span>
               </div>
               <p className="text-xs text-gray-500 mt-2">
                 Didn’t receive a code?
-                <button type="button" className="text-red-600 font-semibold ml-1">
+                <button
+                  type="button"
+                  className="text-red-600 font-semibold ml-1"
+                >
                   Resend
                 </button>
               </p>
               <button
                 type="submit"
-                className="mt-10 w-full bg-blue-700 hover:bg-blue-800 text-white text-base font-normal py-3 rounded-lg"
+                className="mt-10 cursor-pointer w-full bg-blue-700 hover:bg-blue-800 text-white text-base font-normal py-3 rounded-lg"
               >
-                Submit
+                {isLoading ? (
+                  <FaSpinner className="animate-spin mx-auto" />
+                ) : (
+                  "Submit"
+                )}
               </button>
             </form>
           </section>
