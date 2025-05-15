@@ -19,7 +19,7 @@ export default function SendMoney() {
     <div className="flex flex-col items-center justify-center min-h-screen px-4 bg-[#f9f9f9]">
       <div className="w-full max-w-md bg-white rounded-xl shadow-sm p-6 relative">
         {/* Back Link */}
-        <Link href="/w2/send" className="flex items-center text-sm text-muted-foreground mb-4">
+        <Link href="/lenders/send" className="flex items-center text-sm text-muted-foreground mb-4">
           <Image src="/arrow-left.svg" alt="Back" width={16} height={16} className="mr-1" />
           Back
         </Link>
