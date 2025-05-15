@@ -17,25 +17,22 @@ export async function POST(req: NextRequest, res: NextResponse) {
   );
 
   const apiData = await resData.json();
-
-  const { data } = apiData;
-  const { status } = apiData;
-  const { error } = apiData;
+  console.log("apiData:", apiData);
   
-  if (status === "success") {
-    const response = {
-      data,
-    };
-    return new Response(JSON.stringify(response), {
-      status: 200,
-    });
-  } else {
-    const response = {
-      message: error?.message?.message,
-    };
 
+  if (apiData.error) {
+    const response = {
+      message: apiData.error || "An error occurred",
+    };
     return new Response(JSON.stringify(response), {
       status: 400,
     });
   }
+
+  const response = {
+    apiData,
+  };
+  return new Response(JSON.stringify(response), {
+    status: 200,
+  });
 }

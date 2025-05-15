@@ -6,20 +6,21 @@ export default function KYCPage() {
   const tiers = [
     {
       title: 'Tier 1',
-      isCurrent: true,
+      isCurrent: false,
       values: ['₦ 20,000.00', '₦ 150,000.00', '₦ 50,000.00'],
+      route: '/lenders/account/security/kyc/tier-1',
     },
     {
       title: 'Tier 2',
       isCurrent: false,
       values: ['₦ 50,000.00', '₦ 500,000.00', '₦ 1,000,000.00'],
-      route: '/w2/account/security/kyc/tier-2',
+      route: '/lenders/account/security/kyc/tier-2',
     },
     {
       title: 'Tier 3',
       isCurrent: false,
       values: ['₦5,000,000.00', 'Unlimited', 'Unlimited'],
-      route: '/w2/account/security/kyc/tier-3',
+      route: '/lenders/account/security/kyc/tier-3',
     },
   ]
 
@@ -29,7 +30,7 @@ export default function KYCPage() {
     <div className="bg-[#FAFAFA] min-h-screen text-[#2C2C2C]">
       <div className="max-w-3xl mx-auto px-4 py-6 sm:py-10">
         {/* Back Button */}
-        <Link href="/w2/account/security" className="flex items-center space-x-2 mb-6 text-sm text-black hover:underline">
+        <Link href="/lenders/account/security" className="flex items-center space-x-2 mb-6 text-sm text-black hover:underline">
           <Image src="/arrow-left.svg" alt="Back" width={16} height={16} />
           <span>Back</span>
         </Link>

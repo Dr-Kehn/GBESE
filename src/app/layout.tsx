@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import "../globals.css";
+import "./globals.css";
 import { Work_Sans } from "next/font/google";
-import { Toaster } from 'sonner';
-import TopNavbar from "@/components/lenders/nav/TopNavbar";
+import Providers from "@/redux/providers";
+import { Toaster } from "react-hot-toast";
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -11,7 +11,7 @@ const workSans = Work_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Gbese | Fiat",
+  title: "Gbese",
   icons: "/gbese-icon.png",
 };
 
@@ -23,8 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={workSans.className} suppressHydrationWarning={true}>
-        <TopNavbar />
-        {children}
+        <Providers>
+          {children}
+        </Providers>
         <Toaster />
       </body>
     </html>

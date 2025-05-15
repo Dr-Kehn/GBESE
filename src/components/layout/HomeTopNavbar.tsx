@@ -16,7 +16,9 @@ export default function HomeTopNavbar() {
     <nav className="w-full bg-[#E7EFFB] px-4 sm:px-6 lg:px-20 py-4 relative z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <Image src="/image/Logo.png" alt="Logo" width={100} height={100} />
+        <Link href={"/"}>
+          <Image src="/image/Logo.png" alt="Logo" width={100} height={100} />
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-6">
@@ -49,13 +51,13 @@ export default function HomeTopNavbar() {
         {/* Auth Buttons */}
         <div className="space-x-2 ml-6 hidden md:flex">
           <Link href="/auth/login">
-            <button className="px-4 py-1.5 border border-[#2a5db0] rounded text-[#2a5db0] text-xs font-semibold flex items-center justify-center">
-              <FaFileAlt className="mr-1" /> Sign in
+            <button className="px-4 cursor-pointer py-1.5 border border-[#2a5db0] rounded text-[#2a5db0] text-xs font-semibold flex items-center justify-center">
+              <i className="far fa-file-alt mr-1"></i> Sign in
             </button>
           </Link>
           <Link href="/auth/sign-up">
-            <button className="px-4 py-1.5 border border-[#2a5db0] rounded text-[#2a5db0] text-xs font-semibold flex items-center justify-center">
-              <FaFileAlt className="mr-1" /> Sign Up
+            <button className="px-4 cursor-pointer py-1.5 border border-[#2a5db0] rounded text-[#2a5db0] text-xs font-semibold flex items-center justify-center">
+              <i className="far fa-file-alt mr-1"></i> Sign Up
             </button>
           </Link>
         </div>
@@ -112,6 +114,13 @@ export default function HomeTopNavbar() {
               >
                 <Link href="/faq">FAQ</Link>
               </li>
+              <Link href="/faq">
+                <li className="text-[#9ca6b8] cursor-pointer select-none"
+                onClick={() => setIsOpen(false)}
+                >
+                  FAQ
+                </li>
+              </Link>
             </ul>
 
             <div className="mt-6 flex flex-col space-y-3">
