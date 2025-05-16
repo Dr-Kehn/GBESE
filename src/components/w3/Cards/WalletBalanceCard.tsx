@@ -8,11 +8,13 @@ import {CryptoCards} from "./CryptoCard";
 import { CollectablesTab } from "./CollectablesCard";
 import BorrowTab from "./BorrowCard";
 import { DebtTransferCard } from "./DeptTransferCard";
+import { useLoggedInUser } from "@/hooks/useLoggedInUser";
 
 
 export default function BalanceCard() {
   // State to track which tab is active
   const [activeTab, setActiveTab] = useState("assets");
+  const {userData, userRefetching} = useLoggedInUser()  
 
   // Function to render the appropriate tab content
   const renderTabContent = () => {
@@ -46,7 +48,7 @@ export default function BalanceCard() {
             height={100}
           />
           <div className="text-sm relative z-10">Crypto Balance</div>
-          <div className="text-3xl font-semibold relative z-10">$800.12</div>
+          <div className="text-3xl font-semibold relative z-10">${userData?.usdcBalance}</div>
           <div className="text-xs relative z-10">Last updated 38 secs ago</div>
         </div>
       </div>
