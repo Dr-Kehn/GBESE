@@ -31,7 +31,7 @@ export default function BalanceCard() {
       </div>
 
       {/* Action Buttons */}
-      <div className="grid lg:grid-cols-4 grid-cols-2 gap-2 w-full">
+      <div className="grid sm:grid-cols-2 grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 justify-items-center mt-4 w-full">
         <Link href="/lenders/dashboard">
           <Button
             variant={pathname === "/w2/dashboard" ? "active" : "outline"}

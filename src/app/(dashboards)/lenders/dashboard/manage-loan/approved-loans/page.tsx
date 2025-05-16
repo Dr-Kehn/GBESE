@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import TopNavbar from "@/components/layout/TopNavbar";
 import BalanceCard from "@/components/lenders/dashboard/BalanceCard";
@@ -19,9 +20,10 @@ const DebtTransferPage = () => {
       <BalanceCard />
       <div className=" px-4 md:px-12 pb-10 mt-10">
         {/* Buttons */}
-        <div className="flex flex-wrap gap-2 mt-6">
+        <Card className="mt-6 p-4 w-full max-w-5xl rounded-2xl shadow-sm">
+        <div className="flex justify-center gap-2 mb-6 flex-col md:flex-row">
           <Button
-            className="w-full"
+            className=""
             size="sm"
             variant="outline"
             onClick={() => handleRoute("/lenders/dashboard/manage-loan")}
@@ -29,7 +31,7 @@ const DebtTransferPage = () => {
             Incoming Request
           </Button>
           <Button
-            className="w-full"
+            className=""
             size="sm"
             variant="outline"
             onClick={() => handleRoute("/lenders/dashboard/manage-loan/My-Ads")}
@@ -38,7 +40,7 @@ const DebtTransferPage = () => {
           </Button>
           <Button
             size="sm"
-            className="bg-blue-600 text-white w-full"
+            className="bg-blue-600 text-white"
             onClick={() =>
               handleRoute("/lenders/dashboard/manage-loan/approved-loans")
             }
@@ -97,6 +99,7 @@ const DebtTransferPage = () => {
 
           </table>
         </div>
+        </Card>
       </div>
     </div>
   );

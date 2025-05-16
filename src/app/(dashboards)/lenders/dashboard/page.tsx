@@ -10,13 +10,13 @@ import BalanceCard from '@/components/lenders/dashboard/BalanceCard';
 
 
 const beneficiaries = [
-  { name: 'Dorothy Ubuara', color: 'bg-green-600', initial: 'A' },
-  { name: 'Dorothy Ubuara', color: 'bg-yellow-400', initial: 'A' },
-  { name: 'Dorothy Ubuara', color: 'bg-blue-500', initial: 'A' },
-  { name: 'Dorothy Ubuara', color: 'bg-purple-600', initial: 'A' },
-  { name: 'Dorothy Ubuara', color: 'bg-red-600', initial: 'A' },
-  { name: 'Dorothy Ubuara', color: 'bg-yellow-400', initial: 'A' },
-  { name: 'Dorothy Ubuara', color: 'bg-blue-500', initial: 'A' },
+  { name: 'Dorothy Ubuara', color: 'bg-green-600', initial: 'D' },
+  { name: 'Salem Onah', color: 'bg-yellow-400', initial: 'S' },
+  { name: 'Divine Okorie', color: 'bg-blue-500', initial: 'D' },
+  { name: 'John Iweh', color: 'bg-purple-600', initial: 'J' },
+  { name: 'Tochukwu Ukwuoma', color: 'bg-red-600', initial: 'T' },
+  { name: 'Nnaemeka Uzochukwu', color: 'bg-yellow-400', initial: 'N' },
+  { name: 'Anthony Okafor', color: 'bg-blue-500', initial: 'A' },
 ];
 
 const recentTransactions = [
@@ -42,13 +42,13 @@ const recentTransactions = [
 
 export default function LenderDashboardBody() {
   return (
-    <div className="space-y-10">
+    <div className="space-y-10 pt-6">
       {/*BalanceCard*/}
       <div>
         <BalanceCard />
       </div>
       {/*Page Content*/}
-    <div className="px-4 md:px-8 py-6 space-y-10">
+    <div className="space-y-4 mx-auto md:w-[50%] w-[90%]">
       {/* Beneficiaries */}
       <div className="flex justify-between items-center">
         <h3 className="text-base font-semibold text-blue-600">Beneficiaries</h3>
