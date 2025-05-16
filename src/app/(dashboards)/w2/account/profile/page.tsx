@@ -167,6 +167,14 @@ export default function AccountProfile() {
         )}
         </div>
       </div>
+      {/* Save Changes */}
+      <div className="flex justify-end mt-6">
+        <button className="flex items-center justify-between gap-3 border bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700">
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-bold">Save Changes</span>
+          </div>
+        </button>
+      </div>
     </div>
   )
 }
