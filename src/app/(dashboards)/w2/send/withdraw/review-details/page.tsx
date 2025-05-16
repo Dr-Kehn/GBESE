@@ -54,7 +54,7 @@ export default function ReviewDetailsPage({ withdrawalData }: WithdrawalProps) {
         <Link href="/w2/send/withdraw/select-bank" className="flex items-center text-sm text-gray-500 hover:text-gray-700 mb-4">
           <Image src="/arrow-left.svg" alt="Back" width={16} height={16} className="mr-2" />
           Back
-        </Link>git
+        </Link>
 
         {/* Title */}
         <div className="text-center mb-6">
