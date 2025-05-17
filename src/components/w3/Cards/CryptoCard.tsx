@@ -3,9 +3,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import { CryptoDetailPage } from "../CryptoDetails/CryptoDetails";
+import { useLoggedInUser } from "@/hooks/useLoggedInUser";
 
 export const CryptoCards = () => {
   const [selectedCurrency, setSelectedCurrency] = useState<string | null>(null);
+  const {userData, userRefetching} = useLoggedInUser()  
+
 
   const handleCardClick = (currency: string) => {
     setSelectedCurrency(currency); // Set the selected currency to display details
@@ -26,7 +29,7 @@ export const CryptoCards = () => {
           {/* Gbese Card */}
           <div
             className="bg-[#1a1a1a] rounded-lg p-6 flex justify-between cursor-pointer"
-            onClick={() => handleCardClick("Gbese")}
+            onClick={() => handleCardClick("GBESE")}
           >
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
@@ -39,12 +42,12 @@ export const CryptoCards = () => {
               </div>
               <div>
                 <div className="text-white">Gbese</div>
-                <div className="text-gray-400 text-xs">5 GB</div>
+                <div className="text-gray-400 text-xs">{userData?.gbeseTokenBalance} GB</div>
               </div>
             </div>
             <div className="text-right">
-              <div className="text-white">$125.40</div>
-              <div className="text-green-500 text-xs">+2.3%</div>
+              <div className="text-white">-</div>
+              <div className="text-green-500 text-xs">-</div>
             </div>
           </div>
 
@@ -59,12 +62,12 @@ export const CryptoCards = () => {
               </div>
               <div>
                 <div className="text-white">Usdc</div>
-                <div className="text-gray-400 text-xs">50 USDC</div>
+                <div className="text-gray-400 text-xs">{userData?.usdcBalance} USDC</div>
               </div>
             </div>
             <div className="text-right">
-              <div className="text-white">$50</div>
-              <div className="text-green-500 text-xs">+2.3%</div>
+              <div className="text-white">${userData?.usdcBalance}</div>
+              <div className="text-green-500 text-xs">2%</div>
             </div>
           </div>
 
@@ -84,11 +87,11 @@ export const CryptoCards = () => {
               </div>
               <div>
                 <div className="text-white">Eth</div>
-                <div className="text-gray-400 text-xs">0.04 ETH</div>
+                <div className="text-gray-400 text-xs">{userData?.ethBalance} ETH</div>
               </div>
             </div>
             <div className="text-right">
-              <div className="text-white">$240</div>
+              <div className="text-white">${userData?.ethBalance}</div>
               <div className="text-green-500 text-xs">+2.3%</div>
             </div>
           </div>

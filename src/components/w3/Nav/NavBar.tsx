@@ -5,10 +5,12 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
+import { useLoggedInUser } from "@/hooks/useLoggedInUser";
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const {userData, userRefetching} = useLoggedInUser()  
 
   // Check window size on mount and resize
   useEffect(() => {
@@ -52,13 +54,13 @@ export default function NavBar() {
 
       {/* Navigation Links - Desktop */}
       <nav className="hidden md:flex space-x-4 lg:space-x-6 items-center">
-        <NavItem
+        {/* <NavItem
           href="/w3/dashboard"
           label="Home"
           icon="/Home.svg"
           iconActive="/Home-active.svg"
-        />
-        <NavItem
+        /> */}
+        {/* <NavItem
           href="/w3/dashboard"
           label="Send"
           icon="/send.svg"
@@ -69,7 +71,7 @@ export default function NavBar() {
           label="Card"
           icon="/card.svg"
           iconActive="/card-active.svg"
-        />
+        /> */}
       </nav>
 
       {/* Account - Desktop */}
@@ -84,7 +86,7 @@ export default function NavBar() {
             width={20}
             height={20}
           />
-          <span>0xf616...7f7e</span>
+          <span>{userData?.walletAddress?.slice(0, 12)}..</span>
           <div className="w-0.5 h-5 bg-gray-400"></div>
         </Link>
 
@@ -130,7 +132,7 @@ export default function NavBar() {
       {isMenuOpen && (
         <div className="absolute top-full left-0 right-0 bg-black shadow-md z-50 md:hidden">
           <div className="flex flex-col py-2">
-            <MobileNavItem
+            {/* <MobileNavItem
               href="/w3/dashboard"
               label="Home"
               icon="/Home.svg"
@@ -157,10 +159,10 @@ export default function NavBar() {
               href="/w3/faq"
               label="FAQ"
               icon="/question-circle.svg"
-            />
+            /> */}
             <MobileNavItem
               href="/w2/account"
-              label="0xf616...7f7e"
+              label={userData?.walletAddress}
               icon="/gbese-icon.svg"
             />
           </div>

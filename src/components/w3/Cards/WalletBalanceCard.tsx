@@ -3,16 +3,18 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import FiatCryptoToggle from "../FiatCryptoToggle";
+import FiatCryptoToggle from "../../FiatCryptoToggle";
 import {CryptoCards} from "./CryptoCard";
 import { CollectablesTab } from "./CollectablesCard";
 import BorrowTab from "./BorrowCard";
 import { DebtTransferCard } from "./DeptTransferCard";
+import { useLoggedInUser } from "@/hooks/useLoggedInUser";
 
 
 export default function BalanceCard() {
   // State to track which tab is active
   const [activeTab, setActiveTab] = useState("assets");
+  const {userData, userRefetching} = useLoggedInUser()  
 
   // Function to render the appropriate tab content
   const renderTabContent = () => {
@@ -21,10 +23,10 @@ export default function BalanceCard() {
         return <CryptoCards />;
       case "collectables":
         return <CollectablesTab />;
-      case "borrow":
-        return <BorrowTab />;
-      case "debt-transfer":
-        return <DebtTransferCard />;
+      // case "borrow":
+      //   return <BorrowTab />;
+      // case "debt-transfer":
+      //   return <DebtTransferCard />;
       default:
         return <CryptoCards />;
     }
@@ -46,13 +48,13 @@ export default function BalanceCard() {
             height={100}
           />
           <div className="text-sm relative z-10">Crypto Balance</div>
-          <div className="text-3xl font-semibold relative z-10">$800.12</div>
+          <div className="text-3xl font-semibold relative z-10">${userData?.usdcBalance}</div>
           <div className="text-xs relative z-10">Last updated 38 secs ago</div>
         </div>
       </div>
 
       {/* Action Buttons (now working as tabs) */}
-      <div className="grid lg:grid-cols-4 text-white grid-cols-2 gap-2 w-full">
+      <div className="grid text-white grid-cols-2 gap-2 w-full">
         <Button
           variant={activeTab === "assets" ? "active" : "outline"}
           className="w-full cursor-pointer bg-transparent"
@@ -71,7 +73,7 @@ export default function BalanceCard() {
           Collectables
         </Button>
 
-        <Button
+        {/* <Button
           variant={activeTab === "borrow" ? "active" : "outline"}
           className="w-full cursor-pointer bg-transparent"
           onClick={() => setActiveTab("borrow")}
@@ -87,7 +89,7 @@ export default function BalanceCard() {
         >
           <Image src="/debt transfer.svg" alt="" width={20} height={20} />
           Debt Transfer
-        </Button>
+        </Button> */}
       </div>
 
       {/* Tab Content Area */}
