@@ -67,7 +67,7 @@ const Login = () => {
                 Please check that you’re visiting the correct URL
               </h2>
               <p className="font-semibold text-green-900 mt-1 text-base leading-snug">
-                https://app.gbese.com
+                https://gbese-alpha.vercel.app
               </p>
             </div>
             <div className="flex flex-col space-y-2 max-w-md bg-white p-8 rounded-xl ">
@@ -87,7 +87,7 @@ const Login = () => {
                     className="font-semibold text-black text-sm"
                     htmlFor="email"
                   >
-                    Username
+                    Email
                   </label>
                   <input
                     className="border border-[#2563eb] rounded-md px-4 py-3 text-gray-400 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
