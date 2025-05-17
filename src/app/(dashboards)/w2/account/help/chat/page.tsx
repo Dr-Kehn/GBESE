@@ -17,10 +17,15 @@ export default function ChatWithUsPage() {
 
   const handleSubmit = () => {
     const { name, email, message } = form
-    const mailto = `mailto:ezeokpokc@yahoo.com?subject=Support Request from ${name}&body=Name: ${name}%0AEmail: ${email}%0A%0AMessage:%0A${encodeURIComponent(
+    const mailto = `mailto:gbeseappofficial@gmail.com?subject=Support Request from ${name}&body=Name: ${name}%0AEmail: ${email}%0A%0AMessage:%0A${encodeURIComponent(
       message
     )}`
     window.open(mailto, '_blank')
+     setForm({
+    name: '',
+    email: '',
+    message: '',
+    })
   }
 
   return (

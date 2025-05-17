@@ -39,7 +39,6 @@ const Login = () => {
     setIsLoading(true);
   
     const formData = { email, password };
-  
     const handleLoginSuccess = (accessToken: string) => {
       if (!accessToken) {
         toast.error("No access token received");

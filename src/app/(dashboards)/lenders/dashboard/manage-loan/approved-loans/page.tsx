@@ -20,7 +20,7 @@ const DebtTransferPage = () => {
       <BalanceCard />
       <div className=" px-4 md:px-12 pb-10 mt-10">
         {/* Buttons */}
-        <Card className="mt-6 p-4 w-full max-w-5xl rounded-2xl shadow-sm">
+        <Card className="mt-6 p-4 w-full max-w-5xl rounded-2xl shadow-sm mx-auto">
         <div className="flex justify-center gap-2 mb-6 flex-col md:flex-row">
           <Button
             className=""

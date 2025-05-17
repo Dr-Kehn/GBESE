@@ -24,9 +24,11 @@ export default function Beneficiaries() {
       <div className="flex gap-6 overflow-x-auto justify-center mt-10">
         {beneficiaries.map((b, idx) => (
           <div key={idx} className="flex flex-col items-center">
-            <Avatar className="bg-green-600 text-white w-12 h-12">
-              <AvatarFallback>{b.initial}</AvatarFallback>
-            </Avatar>
+            <div
+              className={`w-10 h-10 rounded-full text-white flex items-center justify-center text-sm font-semibold ${b.color}`}
+            >
+              {b.initial}
+            </div>
             <p className="text-xs text-center mt-2 text-gray-700">{b.name}</p>
           </div>
         ))}

@@ -23,9 +23,14 @@ export default function HomeTopNavbar() {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-6">
           <ul className="flex items-center space-x-6 text-sm font-normal">
-            <li className="text-[#9ca6b8] flex items-center cursor-pointer select-none">
-              Personal
-              <FaChevronDown className="text-[#9ca6b8] ml-1 text-xs" />
+           <li
+              className={
+                isActive("/")
+                  ? "text-[#2a5db0] font-semibold"
+                  : "text-[#9ca6b8] font-normal"
+              }
+            >
+             <Link href='/'> Home </Link>
             </li>
             <li
               className={
@@ -65,7 +70,7 @@ export default function HomeTopNavbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(true)}
-          className="md:hidden text-[#2a5db0] text-xl"
+          className="md:hidden text-[#2a5db0] text-xl cursor-pointer"
           aria-label="Open Menu"
         >
           <FaBars />
@@ -92,9 +97,15 @@ export default function HomeTopNavbar() {
             </div>
 
             <ul className="space-y-4 text-xl font-normal">
-              <li className="text-[#9ca6b8] flex items-center cursor-pointer select-none">
-                Personal
-                <FaChevronDown className="text-[#9ca6b8] ml-1 text-xs" />
+             <li
+              className={
+                isActive("/")
+                  ? "text-[#2a5db0] font-semibold"
+                  : "text-[#9ca6b8] font-normal"
+              }
+            >
+               <Link href='/'> Home </Link>
+              
               </li>
               <li
                 className={
@@ -114,23 +125,16 @@ export default function HomeTopNavbar() {
               >
                 <Link href="/faq">FAQ</Link>
               </li>
-              <Link href="/faq">
-                <li className="text-[#9ca6b8] cursor-pointer select-none"
-                onClick={() => setIsOpen(false)}
-                >
-                  FAQ
-                </li>
-              </Link>
             </ul>
 
             <div className="mt-6 flex flex-col space-y-3">
               <Link href="/auth/login">
-                <button className="w-full px-4 py-2 border border-[#2a5db0] rounded text-[#2a5db0] text-xs font-semibold flex items-center justify-center">
+                <button className="w-full px-4 py-2 border border-[#2a5db0] rounded text-[#2a5db0] text-xs font-semibold flex items-center justify-center cursor-pointer">
                   <FaFileAlt className="mr-1" /> Sign in
                 </button>
               </Link>
               <Link href="/auth/sign-up">
-                <button className="w-full px-4 py-2 border border-[#2a5db0] rounded text-[#2a5db0] text-xs font-semibold flex items-center justify-center">
+                <button className="w-full px-4 py-2 border border-[#2a5db0] rounded text-[#2a5db0] text-xs font-semibold flex items-center justify-center cursor-pointer">
                   <FaFileAlt className="mr-1" /> Sign Up
                 </button>
               </Link>

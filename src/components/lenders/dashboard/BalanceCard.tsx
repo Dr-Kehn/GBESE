@@ -82,7 +82,7 @@ export default function BalanceCard() {
       <div className="flex justify-center gap-3 mt-4 w-full">
         <Link href="/lenders/dashboard">
           <Button
-            variant={pathname === "/w2/dashboard" ? "active" : "outline"}
+            variant={pathname === "/lenders/dashboard" ? "active" : "outline"}
             className="w-full cursor-pointer"
           >
             <Image src="/spend.svg" alt="" width={20} height={20} />
