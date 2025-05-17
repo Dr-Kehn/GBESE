@@ -29,7 +29,10 @@ export default function verifyOTP() {
 
     try {
       console.log("formdata:", formData);
-      const response = await axios.post(`/api/verify-email`, formData);
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/users/register/initiate`,
+        formData
+      );
       console.log("response from form:", response);
       toast.success("Email Verified");
       dispatch(clearUserEmailForm());

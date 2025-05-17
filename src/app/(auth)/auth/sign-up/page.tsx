@@ -47,7 +47,10 @@ const SignUP = () => {
 
     try {
       console.log("formdata:", formData);
-      const response = await axios.post(`/api/signup`, formData);
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/users/register/initiate`,
+        formData
+      );
       dispatch(
         setUserEmailForm({
           email: formData?.email,
