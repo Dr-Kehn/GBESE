@@ -18,15 +18,19 @@ export default function ShareUsernamePage() {
   const router = useRouter();
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(message);
-      setCopied(true);
-      toast.success("Copied successfully!");
-    } catch (err) {
-      toast.error("Failed to copy");
-    }
-  };
+const handleCopy = async () => {
+  try {
+    await navigator.clipboard.writeText(message);
+    setCopied(true);
+    toast.success("Copied successfully!");
+    setTimeout(() => {
+      router.push("/w2/dashboard/add-money");
+    }, 1000); // Optional delay to let user see the toast
+  } catch (err) {
+    toast.error("Failed to copy");
+  }
+};
+
 
   return (
     <main className="min-h-screen bg-white">
@@ -60,7 +64,7 @@ export default function ShareUsernamePage() {
               <Button
                 variant="outline"
                 onClick={handleCopy}
-                className="mt-6 w-full max-w-md"
+                className="mt-6 w-full max-w-md hover:bg-blue-700 cursor-pointer"
               >
                 Copy Message
               </Button>
