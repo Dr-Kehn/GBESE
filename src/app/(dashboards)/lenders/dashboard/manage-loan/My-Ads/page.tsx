@@ -6,15 +6,14 @@ import { useRouter } from "next/navigation";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import TopNavbar from "@/components/layout/TopNavbar";
 import BalanceCard from "@/components/lenders/dashboard/BalanceCard";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 export default function MyAdsPage() {
-  const [minimumAmount, setMinimumAmount] = useState("");
-  const [maximumAmount, setMaximumAmount] = useState("");
-  const [interestRate, setInterestRate] = useState("");
-  const [repaymentDuration, setRepaymentDuration] = useState("");
+  const [minimumAmount, setMinimumAmount] = useState<number | null>(null)
+  const [maximumAmount, setMaximumAmount] = useState<number | null>(null);
+  const [interestRate, setInterestRate] = useState<number | null>(null);
+  const [repaymentDuration, setRepaymentDuration] = useState<number | null>(null);
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
@@ -64,33 +63,36 @@ export default function MyAdsPage() {
                 <div>
                   <label className="text-sm font-medium">Amount Minimum</label>
                   <Input
+                  type='number'
                     placeholder="Input min amount"
-                    value={minimumAmount}
-                    onChange={(e) => setMinimumAmount(e.target.value)}
+                    value={minimumAmount as number}
+                    onChange={(e) => setMinimumAmount(e.target.valueAsNumber)}
                   />
                 </div>
                 <div>
                   <label className="text-sm font-medium">Amount Maximum</label>
                   <Input
+                    type='number'
                     placeholder="Input max amount"
-                    value={maximumAmount}
-                    onChange={(e) => setMaximumAmount(e.target.value)}
+                    value={maximumAmount as number}
+                    onChange={(e) => setMaximumAmount(e.target.valueAsNumber)}
                   />
                 </div>
                 <div>
                   <label className="text-sm font-medium">Interest Rate</label>
                   <Input
+                  type='number'
                     placeholder="Input interest rate"
-                    value={interestRate}
-                    onChange={(e) => setInterestRate(e.target.value)}
+                    value={interestRate as number}
+                    onChange={(e) => setInterestRate(e.target.valueAsNumber)}
                   />
                 </div>
                 <div>
                   <label className="text-sm font-medium">Repayment Duration</label>
                   <Input
                     placeholder="Input repayment duration"
-                    value={repaymentDuration}
-                    onChange={(e) => setRepaymentDuration(e.target.value)}
+                    value={repaymentDuration as number}
+                    onChange={(e) => setRepaymentDuration(e.target.valueAsNumber)}
                   />
                 </div>
 
