@@ -56,7 +56,7 @@ const userApi = userApiConfig.injectEndpoints({
         
         try {
           console.log(credentials);
-          const response = await axios.post("http://localhost:3002/api/login", credentials,{withCredentials:true});
+          const response = await axios.post("/api/login", credentials,{withCredentials:true});
           console.log(response.data);
           return { data: response.data };
         } catch (error:any) {

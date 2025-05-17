@@ -11,8 +11,7 @@ const baseQuery = fetchBaseQuery({
   prepareHeaders: async (headers) => {
   
     const token = await fetchToken() as { data: { token: string } };
-    if (token?.data?.token) {
-      headers.set("Authorization", `Bearer ${token.data.token}`);
+    if (token?.data.token) {
       headers.set("Content-Type", `application/json`);
       headers.set("Accept", `application/json`);
     }        

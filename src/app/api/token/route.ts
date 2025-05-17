@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   const cookieStore = cookies();
 
-  const token = cookieStore.get("gbese");
+  const token = cookieStore.get("gbese.sid");
 
   if (!token) {
     return (
@@ -19,10 +19,7 @@ export async function GET() {
 
   const { value } = token;
 
-  const headers = {
-    Authorization: `Bearer ${value}`,
-    "Content-Type": "application/json",
-  };
+ 
 
   return NextResponse.json({ token: value });
 }
