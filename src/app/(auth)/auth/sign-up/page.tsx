@@ -48,7 +48,7 @@ const SignUP = () => {
     try {
       console.log("formdata:", formData);
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/register/initiate`,
+        `${process.env.NEXT_PUBLIC_API_URL}/users/register/initiate`,
         formData
       );
       dispatch(
