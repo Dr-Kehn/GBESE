@@ -1,9 +1,11 @@
 
 "use client"
+import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
+import toast from 'react-hot-toast'
 import TopNavbar from '@/components/layout/TopNavbar'
 
 const lendersData = [
@@ -50,7 +52,7 @@ const lendersData = [
     rate: '1% Interest Rate',
   },
   {
-    name: 'Ann Ivuno',
+    name: 'Ann Iwuno',
     price: '₦ 20,000 - 50,000',
     duration: '1 Month',
     rate: '1% Interest Rate',
@@ -60,6 +62,34 @@ const lendersData = [
 export default function MarketplacePage() {
   const pathname = usePathname()
   const activeTab = pathname === '/marketplace/debtors' ? 'debtors' : 'lenders'
+  const [loadingIndex, setLoadingIndex] = useState<number | null>(null)
+
+  const handleRequestLoan = async (lender: typeof lendersData[number], index: number) => {
+    try {
+      setLoadingIndex(index)
+      const response = await fetch('/api/loan-requests', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          lenderName: lender.name,
+          price: lender.price,
+          duration: lender.duration,
+          rate: lender.rate,
+        }),
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) throw new Error(result.message || 'Request failed')
+
+      toast.success('Loan request sent successfully!')
+    } catch (error: any) {
+      toast.error(error.message)
+    } finally {
+      setLoadingIndex(null)
+    }
+  }
+
 
   return (
     <div className="min-h-screen bg-[#FAFAFA]">
@@ -119,10 +149,12 @@ export default function MarketplacePage() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <Link href="/w2/dashboard/borrow/loan">
                           <Button
-                            className="bg-blue-600 border text-white hover:bg-blue-700 hover:text-white transition-colors"
-                            variant="outline"
+                             onClick={() => handleRequestLoan(lender, index)}
+                             className="bg-blue-600 border text-white hover:bg-blue-700 hover:text-white transition-colors"
+                             variant="outline"
+                             disabled={loadingIndex === index}
                           >
-                            Borrow Money
+                             {loadingIndex === index ? 'Requesting...' : 'Borrow Money'}
                           </Button>
                         </Link>
                       </td>
