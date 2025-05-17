@@ -34,7 +34,7 @@ export default function BalanceCard() {
       <div className="grid sm:grid-cols-2 grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 justify-items-center mt-4 w-full">
         <Link href="/lenders/dashboard">
           <Button
-            variant={pathname === "/w2/dashboard" ? "active" : "outline"}
+            variant={pathname === "/lenders/dashboard" ? "active" : "outline"}
             className="w-full cursor-pointer"
           >
             <Image src="/spend.svg" alt="" width={20} height={20} />
@@ -43,7 +43,7 @@ export default function BalanceCard() {
         </Link>
         <Link href="/lenders/dashboard/add-money">
           <Button
-            variant={pathname === "/w2/dashboard/add-money" ? "active" : "outline"}
+            variant={pathname === "/lenders/dashboard/add-money" ? "active" : "outline"}
             className="w-full cursor-pointer"
           >
             <Image src="/AddMoney.svg" alt="" width={20} height={20} />
@@ -53,7 +53,7 @@ export default function BalanceCard() {
         <Link href="/lenders/dashboard/manage-loan">
           <Button
             variant={
-              pathname === "/w2/dashboard/debt-transfer" ? "active" : "outline"
+              pathname === "/lenders/dashboard/manage-loan" ? "active" : "outline"
             }
             className="w-full cursor-pointer"
           >
