@@ -1,15 +1,17 @@
 "use client";
-import axios from "axios";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { FaSpinner } from "react-icons/fa";
+import { useLoginMutation } from "@/redux/services/slices/UserSlice";
+import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [login] = useLoginMutation();
 
   const router = useRouter();
 
@@ -20,9 +22,17 @@ const Login = () => {
       email,
       password,
     };
-    try {
+
+    toast.success("logging in");
+     try {
       const response = await axios.post(`/api/login`, formData);
-      const {data} = response
+      const {data} = response;
+
+      if (data.success == false){
+        toast.error(data.message);
+        setIsLoading(false); 
+        return; 
+      }
       if (data.apiData.user.role == "user") {
         router.push("/w2/dashboard");
       }else {        
@@ -30,9 +40,29 @@ const Login = () => {
       }
       setIsLoading(false);
     } catch (error: any) {
-      toast.error(error?.response?.data?.message);
+      console.log(error);
+      toast.error("Failed to login");
       setIsLoading(false);      
     }
+    // await login(formData).unwrap().then((payload:any) =>{
+    //   console.log(payload);
+    //   const data = payload.apiData;
+      
+    //     toast.error(data.message.toString());
+      
+      // if (payload.apiData.user.role == "user") {
+      //   toast.success(payload.apiData.message.toString());
+      //   router.push("/w2/dashboard");
+      // }else {        
+      //   router.push("/lenders/dashboard");
+      // }
+    //   setIsLoading(false);
+    // }).catch((error) => {
+    //   console.log(error);
+    //   toast.error(error.message);
+    //   setIsLoading(false);  
+    // });
+    
   };
 
   return (

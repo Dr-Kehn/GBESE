@@ -9,6 +9,7 @@ import fetchToken from "@/lib/auth";
 const baseQuery = fetchBaseQuery({
   baseUrl: `${process.env.NEXT_PUBLIC_API_URL}`,
   prepareHeaders: async (headers) => {
+  
     const token = await fetchToken() as { data: { token: string } };
     if (token?.data?.token) {
       headers.set("Authorization", `Bearer ${token.data.token}`);

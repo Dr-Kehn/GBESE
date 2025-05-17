@@ -11,17 +11,19 @@ import {
 } from "redux-persist";
 import { api } from "./services/apiSlices";
 import storage from "redux-persist/lib/storage";
-import userEmailReducer from "@/redux/services/userEmailSlice"
+import userEmailReducer from "@/redux/services/userEmailSlice";
+import userReducer from './services/slices/UserSlice';
 
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["global", "userEmail"],
+  whitelist: ["global", "userEmail", "User"],
 };
 
 const rootReducer = combineReducers({
   userEmail: userEmailReducer,
+  user: userReducer,
   [api.reducerPath]: api.reducer,
 });
 
