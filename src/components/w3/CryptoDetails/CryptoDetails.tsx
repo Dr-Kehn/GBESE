@@ -34,7 +34,7 @@ interface CryptoDetailsProps {
 
 export function CryptoDetailPage({ currency, onBack }: CryptoDetailsProps) {
   const isMobile = useIsMobile();
-  const { userData, userRefetching } = useLoggedInUser();
+  const { userData } = useLoggedInUser();
   const [sendDialogOpen, setSendDialogOpen] = useState(false);
   const [receiveDialogOpen, setReceiveDialogOpen] = useState(false);
   const [createInternalTransfer, { isLoading }] = useInternalTransferMutation();
