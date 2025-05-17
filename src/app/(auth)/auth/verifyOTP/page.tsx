@@ -30,7 +30,7 @@ export default function verifyOTP() {
     try {
       console.log("formdata:", formData);
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/users/register/initiate`,
+        `${process.env.NEXT_PUBLIC_API_URL}/users/register/verify`,
         formData
       );
       console.log("response from form:", response);

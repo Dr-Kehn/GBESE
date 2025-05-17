@@ -1,40 +1,56 @@
 import { api } from "../apiSlices";
 
-interface IUserResponse {
+
+export interface IUserResponse {
   userId: string;
   username: string;
   email: string;
   phoneNumber: string;
-  registrationDate?: Date;
-  baseCreditScore: string;
+  registrationDate: string;        
+  baseCreditScore: number;
   walletAddress?: string;
-  usdcBalance?: string;
-  ethBalance?: string;
-  gbeseTokenBalance?: string;
-  role?: string;
-  isKYCVerified?: boolean;
-  isEmailVerified?: boolean;
+  usdcBalance?: number;
+  ethBalance?: number;
+  fiatBalance?: number;
+  gbeseTokenBalance?: number;
+  role: "user" | "lender";
+  isKYCVerified: boolean;
+  isEmailVerified: boolean;
 }
 
-const userApiConfig = api.enhanceEndpoints({ addTagTypes: ["Users"] });
-const userApi = userApiConfig.injectEndpoints({
-  endpoints: (builder) => ({
-    getCurrentUser: builder.query<IUserResponse, null>({
-      query: () => ({
-        url: `/users/user`,
-        method: "GET",
+const userApi = api
+  .enhanceEndpoints({ addTagTypes: ["Users"] })
+  .injectEndpoints({
+    endpoints: (builder) => ({
+      // GET current authenticated user 
+      getCurrentUser: builder.query<IUserResponse, void>({
+        query: () => ({ url: "/users/user", method: "GET" }),
+        providesTags: ["Users"],
+        async onQueryStarted(_, { queryFulfilled }) {
+          try {
+            const { data } = await queryFulfilled;
+            localStorage.setItem("user", JSON.stringify(data));
+          } catch (error) {
+            console.error("Failed to store user in localStorage:", error);
+          }
+        },
+      }),
+      
+
+      //fetch user by ID 
+      getUserByID: builder.query<IUserResponse, string>({
+        query: (id) => ({ url: `/users/${id}`, method: "GET" }),
         providesTags: ["Users"],
       }),
     }),
+    overrideExisting: false,
+  });
 
-    getUserByID: builder.query<IUserResponse, String>({
-      query: (id) => ({
-        url: `/users/${id}`,
-        method: "GET",
-        providesTags: ["Users"],
-      }),
-    }),
-  }),
-});
+  export const {
+    useGetCurrentUserQuery,
+    useLazyGetCurrentUserQuery, 
+    useGetUserByIDQuery,
+  } = userApi;
+  
 
-export const { useGetCurrentUserQuery, useGetUserByIDQuery } = userApi;
+export { userApi };

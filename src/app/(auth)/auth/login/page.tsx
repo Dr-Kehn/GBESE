@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { FaSpinner } from "react-icons/fa";
+import Cookies from 'js-cookie';
 
 interface LoginResponse {
   message: string;
@@ -36,30 +37,49 @@ const Login = () => {
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-
+  
     const formData = { email, password };
-
+  
+    const handleLoginSuccess = (accessToken: string) => {
+      if (!accessToken) {
+        toast.error("No access token received");
+        return;
+      }
+      Cookies.set('accessToken', accessToken, {
+        expires: 1,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'strict',
+      });
+      axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
+    };
+  
     try {
+      if (!process.env.NEXT_PUBLIC_API_URL) {
+        throw new Error("API URL not configured");
+      }
+  
       const response = await axios.post<LoginResponse>(
         `${process.env.NEXT_PUBLIC_API_URL}/users/login`,
         formData
       );
-
+  
       const { message, user, accessToken } = response.data;
       console.log("Login successful:", response.data);
-
+  
       toast.success(message || "Login successful");
-
+  
       if (user.role === "user") {
+        handleLoginSuccess(accessToken);
         router.push("/w2/dashboard");
       } else if (user.role === "lender") {
+        handleLoginSuccess(accessToken);
         router.push("/lenders/dashboard");
       } else {
         toast.error("Unknown role returned from server.");
       }
     } catch (error: any) {
-      console.error(" Login failed:", error.response?.data || error.message);
-      toast.error(error?.response?.data?.message || "Login failed");
+      console.error("Login failed:", error.response?.data || error.message);
+      toast.error(error?.response?.data?.message || error.message || "Login failed");
     } finally {
       setIsLoading(false);
     }
