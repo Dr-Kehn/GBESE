@@ -41,7 +41,7 @@ const Login = () => {
 
     try {
       const response = await axios.post<LoginResponse>(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/login`,
+        `${process.env.NEXT_PUBLIC_API_URL}/users/login`,
         formData
       );
 
