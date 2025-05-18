@@ -7,7 +7,7 @@ import { useLoggedInUser } from "@/hooks/useLoggedInUser";
 
 export const CryptoCards = () => {
   const [selectedCurrency, setSelectedCurrency] = useState<string | null>(null);
-  const {userData, userRefetching} = useLoggedInUser()  
+  const {userData} = useLoggedInUser()  
 
 
   const handleCardClick = (currency: string) => {

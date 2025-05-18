@@ -14,7 +14,7 @@ import { useLoggedInUser } from "@/hooks/useLoggedInUser";
 export default function BalanceCard() {
   // State to track which tab is active
   const [activeTab, setActiveTab] = useState("assets");
-  const {userData, userRefetching} = useLoggedInUser()  
+  const {userData} = useLoggedInUser()  
 
   // Function to render the appropriate tab content
   const renderTabContent = () => {

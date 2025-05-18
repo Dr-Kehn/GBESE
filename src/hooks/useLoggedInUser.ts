@@ -2,15 +2,12 @@ import { useGetCurrentUserQuery } from "@/redux/services/slices/UserSlice";
 
 export const useLoggedInUser = () => {
   const {
-    data,
-    refetch: userRefetching,
+    data: userData = null,          
+    refetch,                       
     isLoading: userLoading,
     isError: userError,
     status,
-  } = 
-  useGetCurrentUserQuery(null);
+  } = useGetCurrentUserQuery(undefined);
 
-  const userData = data || null;
-
-  return { userData, userError, userLoading, userRefetching, status };
+  return { userData, userError, userLoading, refetch, status };
 };

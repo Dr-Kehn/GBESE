@@ -1,40 +1,41 @@
 import { api } from "../apiSlices";
 
-interface IUserResponse {
+export interface IUserResponse {
   userId: string;
   username: string;
   email: string;
   phoneNumber: string;
-  registrationDate?: Date;
-  baseCreditScore: string;
+  registrationDate: string;
+  baseCreditScore: number;
   walletAddress?: string;
-  usdcBalance?: string;
-  ethBalance?: string;
-  gbeseTokenBalance?: string;
-  role?: string;
-  isKYCVerified?: boolean;
-  isEmailVerified?: boolean;
+  usdcBalance?: number;
+  ethBalance?: number;
+  fiatBalance?: number;
+  gbeseTokenBalance?: number;
+  role: "user" | "lender";
+  isKYCVerified: boolean;
+  isEmailVerified: boolean;
 }
 
-const userApiConfig = api.enhanceEndpoints({ addTagTypes: ["Users"] });
-const userApi = userApiConfig.injectEndpoints({
+export const userApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getCurrentUser: builder.query<IUserResponse, null>({
-      query: () => ({
-        url: `/users/user`,
-        method: "GET",
-        providesTags: ["Users"],
-      }),
+    getCurrentUser: builder.query<IUserResponse, void>({
+      query: () => {
+        console.log(" getCurrentUser query triggered");
+        return "/users/user";
+      },
+      providesTags: ["User"],
     }),
-
-    getUserByID: builder.query<IUserResponse, String>({
-      query: (id) => ({
-        url: `/users/${id}`,
-        method: "GET",
-        providesTags: ["Users"],
-      }),
+    getUserByID: builder.query<IUserResponse, string>({
+      query: (id) => `/users/${id}`,
+      providesTags: (result, error, id) => [{ type: "User", id }],
     }),
   }),
+  overrideExisting: false,
 });
 
-export const { useGetCurrentUserQuery, useGetUserByIDQuery } = userApi;
+export const {
+  useGetCurrentUserQuery,
+  useLazyGetCurrentUserQuery,
+  useGetUserByIDQuery,
+} = userApi;

@@ -10,7 +10,7 @@ import { useLoggedInUser } from "@/hooks/useLoggedInUser";
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const {userData, userRefetching} = useLoggedInUser()  
+  const {userData} = useLoggedInUser()  
 
   // Check window size on mount and resize
   useEffect(() => {
