@@ -99,7 +99,7 @@ const Login = () => {
                   Sign In to Gbese
                 </h1>
                 <p className="text-gray-500 text-base leading-relaxed">
-                  To sign in, please type in the Username linked to your Gbese
+                  To sign in, please type in the email address linked to your Gbese
                   account
                 </p>
                 <div className="flex flex-col space-y-1">
