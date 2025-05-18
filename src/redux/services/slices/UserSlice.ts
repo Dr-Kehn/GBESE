@@ -1,7 +1,7 @@
 import { api } from "../apiSlices";
 
 export interface IUserResponse {
-  id: string;
+  userId: string;
   username: string;
   email: string;
   phoneNumber: string;
