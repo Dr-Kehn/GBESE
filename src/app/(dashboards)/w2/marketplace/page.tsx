@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  ILoanOfferAddResponse,
+  ILoanOfferAdResponse,
   useGetAllLoanOfferMutation,
 } from "@/redux/services/slices/loanSlice";
 
@@ -14,7 +14,7 @@ export default function MarketplacePage() {
   const activeTab = pathname === "/marketplace/debtors" ? "debtors" : "lenders";
 
   const [getAllLoanOffers] = useGetAllLoanOfferMutation();
-  const [loanOffers, setLoanOffers] = useState<ILoanOfferAddResponse[]>([]);
+  const [loanOffers, setLoanOffers] = useState<ILoanOfferAdResponse[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   
   // Pagination states
@@ -163,7 +163,7 @@ export default function MarketplacePage() {
                           {offer.terms}% Interest Rate
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <Link href="/w2/dashboard/borrow/loan">
+                          <Link href={`/w2/dashboard/borrow/loan/${offer.loanOfferId}`}>
                             <Button
                               className="bg-blue-600 border text-white hover:bg-blue-700 hover:text-white transition-colors"
                               variant="outline"
