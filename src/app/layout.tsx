@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Montserrat } from "next/font/google";
+import { Work_Sans } from "next/font/google";
+import Providers from "@/redux/providers";
+import { Toaster } from "react-hot-toast";
 
-const montserrat = Montserrat({
+const workSans = Work_Sans({
   subsets: ["latin"],
-  weight: ["200", "300", "400"],
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
+
 export const metadata: Metadata = {
-  title: "Auth | Gbese",
-  icons: "/favicon.ico",
+  title: "Gbese",
+  icons: "/gbese-icon.png",
 };
 
 export default function RootLayout({
@@ -19,9 +22,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={montserrat.className} suppressHydrationWarning={true}>
-        {children} 
+      <body className={workSans.className} suppressHydrationWarning={true}>
+        <Providers>
+          {children}
+        </Providers>
+        <Toaster />
       </body>
     </html>
-  );
+  )
 }
