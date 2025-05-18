@@ -9,7 +9,9 @@ export interface InitiateFundResponse {
   message: string;
 }
 
-export const fundApi = api.injectEndpoints({
+const fundApiConfig = api.enhanceEndpoints({ addTagTypes: ["Fund"] });
+const fundApi = fundApiConfig.injectEndpoints({
+
   endpoints: (builder) => ({
     initiateFund: builder.mutation<InitiateFundResponse, InitiateFundRequest>({
       query: (body) => ({

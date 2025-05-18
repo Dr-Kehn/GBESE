@@ -17,7 +17,9 @@ export interface IUserResponse {
   isEmailVerified: boolean;
 }
 
-export const userApi = api.injectEndpoints({
+const userApiConfig = api.enhanceEndpoints({ addTagTypes: ["User"] });
+const userApi = userApiConfig.injectEndpoints({
+
   endpoints: (builder) => ({
     getCurrentUser: builder.query<IUserResponse, void>({
       query: () => {

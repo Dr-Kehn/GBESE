@@ -16,7 +16,8 @@ export interface LoanOfferResponse {
   message?: string;
 }
 
-export const loanApi = api.injectEndpoints({
+const LoanOffersApiConfig = api.enhanceEndpoints({ addTagTypes: ["LoanOffers"] });
+const loanApi = LoanOffersApiConfig.injectEndpoints({
   endpoints: (builder) => ({
     postLoanOffer: builder.mutation<LoanOfferResponse, LoanOfferRequest>({
       query: (body) => ({
