@@ -20,7 +20,7 @@ export default function PaymentCallbackPage() {
     }
 
     const verifyPayment = async () => {
-      const token = Cookies.get("accessToken"); 
+      const token = Cookies.get("token"); 
       console.log("🍪 Token from Cookies:", token); 
       console.log("🔁 Reference to verify:", reference); 
 
