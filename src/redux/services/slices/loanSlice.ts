@@ -20,6 +20,7 @@ export interface ILoanOfferAdResponse extends ILoanOfferRequest {
   loanRequestId: string;
   lenderId: ILenderData;
   status: "open" | "accepted" | "suspended" | "closed";
+  data?: any
 }
 
 export interface ILenderData {
@@ -70,6 +71,14 @@ const loanApi = LoanOffersApiConfig.injectEndpoints({
       }),
     }),
 
+    getSingleUserLoanRequests: builder.mutation<ILoanOfferAdResponse, {userId: string}>({
+      query: ({userId}) => ({
+        url: `/loan-requests/user/${userId}`,
+        method: "GET",
+        providesTags: ["LoanOffers"],
+      }),
+    }),
+
     // You can add more endpoints here like fetchLoanOffers, deleteLoanOffer etc.
   }),
   // overrideExisting: false,
@@ -79,5 +88,6 @@ export const {
   usePostLoanOfferMutation,
   useGetAllLoanOfferMutation,
   useCreateNewLoanRequestMutation,
-  useGetSingleLoanOfferMutation
+  useGetSingleLoanOfferMutation,
+  useGetSingleUserLoanRequestsMutation
 } = loanApi;
