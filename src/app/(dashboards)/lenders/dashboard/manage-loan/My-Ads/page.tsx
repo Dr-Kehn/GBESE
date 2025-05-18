@@ -76,9 +76,9 @@ export default function MyAdsPage() {
         setOpen(false);
         router.push("/lenders/dashboard/manage-loan");
       }, 2000);
-    } catch (err) {
+    } catch (err:any) {
       console.error("Failed to post loan offer:", err);
-      setDialogMessage("Failed to post loan offer. Please try again.");
+      setDialogMessage(err.data.message);
       setOpen(true);
     }
   };
