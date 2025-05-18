@@ -47,9 +47,9 @@ export default function BalanceCard() {
     return () => clearInterval(id);
   }, [lastUpdatedTs]);
 
-  if (isLoading) {
-    return <div className="text-center text-sm text-gray-500">Loading balance…</div>;
-  }
+  // if (isLoading) {
+    // return
+  // }
   if (isError || !user) {
     return (
       <div className="text-center text-sm text-red-500">
@@ -79,7 +79,12 @@ export default function BalanceCard() {
         <div className="relative z-10">
           <div className="text-sm">Fiat Balance</div>
           <div className="text-5xl font-semibold">
-            NGN{user.fiatBalance?.toLocaleString() ?? "0.00"}
+            NGN
+            {isLoading ? (
+              <div className="text-center text-sm text-gray-500">Loading balance…</div>
+            ) : (
+              user.fiatBalance?.toLocaleString() ?? "0.00"
+            )}
           </div>
           <div className="text-xs">Last updated {timeAgo}</div>
         </div>

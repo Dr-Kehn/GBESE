@@ -16,7 +16,25 @@ export interface LoanOfferResponse {
   message?: string;
 }
 
-const LoanOffersApiConfig = api.enhanceEndpoints({ addTagTypes: ["LoanOffers"] });
+export interface ILoanOfferAddResponse {
+  loanRequestId: string;
+  lenderId: ILenderData;
+  terms: number;
+  minLoanAmount: number;
+  maxLoanAmount: number;
+  interestRate: number;
+  status: "open" | "accepted" | "suspended" | "closed";
+}
+
+export interface ILenderData {
+_id: string,
+username: string,
+email:  string
+}
+
+const LoanOffersApiConfig = api.enhanceEndpoints({
+  addTagTypes: ["LoanOffers"],
+});
 const loanApi = LoanOffersApiConfig.injectEndpoints({
   endpoints: (builder) => ({
     postLoanOffer: builder.mutation<LoanOfferResponse, LoanOfferRequest>({
@@ -27,9 +45,18 @@ const loanApi = LoanOffersApiConfig.injectEndpoints({
       }),
       invalidatesTags: ["LoanOffers"],
     }),
+
+    getAllLoanOffer: builder.mutation<ILoanOfferAddResponse, null>({
+      query: () => ({
+        url: "/loan-offers",
+        method: "GET",
+        providesTags: ["LoanOffers"],
+      }),
+    }),
+
     // You can add more endpoints here like fetchLoanOffers, deleteLoanOffer etc.
   }),
-  overrideExisting: false,
+  // overrideExisting: false,
 });
 
-export const { usePostLoanOfferMutation } = loanApi;
+export const { usePostLoanOfferMutation, useGetAllLoanOfferMutation } = loanApi;

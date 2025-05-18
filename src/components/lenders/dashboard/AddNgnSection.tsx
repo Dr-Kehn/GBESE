@@ -33,7 +33,9 @@ export default function AddMoneyCardPage() {
     }
 
     try {
+      console.log("hello");
       const res = await initiateFund({ amount: Number(cleaned) }).unwrap();
+      
       if (res?.paymentLink) {
         window.open(res.paymentLink, "_blank");
       } else {
