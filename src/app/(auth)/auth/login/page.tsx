@@ -47,8 +47,10 @@ const Login = () => {
         throw new Error(data.apiData.message);
       }
       if (data.apiData.user.role == "user") {
+        toast.success(data.apiData.message);
         router.push("/w2/dashboard");
       } else {
+        toast.success(data.apiData.message);
         router.push("/lenders/dashboard");
       }
       setIsLoading(false);
