@@ -5,6 +5,7 @@ import { useRouter, useParams } from "next/navigation";
 import BalanceCard from "@/components/dashboard/BalanceCard";
 import { 
     ILoanOfferAdResponse,
+  ILoanOfferRequest,
   useCreateNewLoanRequestMutation, 
   useGetSingleLoanOfferMutation 
 } from "@/redux/services/slices/loanSlice";
@@ -98,22 +99,22 @@ export default function LoanForm() {
     const newErrors = { ...errors };
 
     // Validate amount
-    if (!formData.amount.trim()) {
+    if (!formData!.amount!.trim()) {
       newErrors.amount = "Loan amount is required";
       valid = false;
-    } else if (isNaN(Number(formData.amount.replace(/[₦,\s]/g, "")))) {
+    } else if (isNaN(Number(formData!.amount!.replace(/[₦,\s]/g, "")))) {
       newErrors.amount = "Please enter a valid amount";
       valid = false;
     }
 
     // Validate purpose
-    if (!formData.purpose.trim()) {
+    if (!formData!.purpose!.trim()) {
       newErrors.purpose = "Purpose is required";
       valid = false;
     }
 
     // Validate term
-    if (!formData.term.trim()) {
+    if (!formData!.term!.trim()) {
       newErrors.term = "Repayment term is required";
       valid = false;
     }
@@ -149,11 +150,15 @@ export default function LoanForm() {
 
     try {
       const loanRequestData = {
-        amount: parseAmount(formData.amount),
+        amount: parseAmount(formData!.amount || ""),
         purpose: formData.purpose,
-        term: parseTerm(formData.term),
+        term: parseTerm(formData!.term || ""),
         loanOfferId: formData.loanOfferId,
+        lenderId: loanOfferDetails!.lenderId._id || {}
       };
+
+      console.log("loanRequestData:", loanRequestData);
+      
 
       // Send the loan request
       const response = await createNewLoanRequest(loanRequestData).unwrap();

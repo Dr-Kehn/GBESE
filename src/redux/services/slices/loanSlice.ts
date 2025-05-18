@@ -8,6 +8,7 @@ export interface ILoanOfferRequest {
   amount?: number;
   term?: number;
   loanOfferId?: string;
+  lenderId?: ILenderData;
   purpose?: string;
 }
 
@@ -24,9 +25,9 @@ export interface ILoanOfferAdResponse extends ILoanOfferRequest {
 }
 
 export interface ILenderData {
-  _id: string;
-  username: string;
-  email: string;
+  _id?: string;
+  username?: string;
+  email?: string;
 }
 
 const LoanOffersApiConfig = api.enhanceEndpoints({
