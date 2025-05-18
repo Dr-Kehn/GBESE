@@ -50,6 +50,8 @@ export default function GbeseConfirm() {
           <input
             type="text"
             inputMode="decimal"
+            placeholder="₦ 10,000.00"
+            pattern="[0-9]*"
             className="w-full text-center text-blue-600 text-xl font-bold bg-transparent border-b border-gray-200 mb-4 focus:outline-none"
             value={amount}
             onChange={handleAmountChange}
