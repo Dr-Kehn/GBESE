@@ -5,7 +5,6 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { FaSpinner } from "react-icons/fa";
-import Cookies from 'js-cookie';
 
 interface LoginResponse {
   message: string;
@@ -26,7 +25,6 @@ interface LoginResponse {
     isEmailVerified: boolean;
   };
 }
-
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,52 +32,25 @@ const Login = () => {
 
   const router = useRouter();
 
+
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-  
-    const formData = { email, password };
-    const handleLoginSuccess = (accessToken: string) => {
-      if (!accessToken) {
-        toast.error("No access token received");
-        return;
-      }
-      Cookies.set('accessToken', accessToken, {
-        expires: 1,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
-      });
-      axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
+    const formData = {
+      email,
+      password,
     };
-  
     try {
-      if (!process.env.NEXT_PUBLIC_API_URL) {
-        throw new Error("API URL not configured");
-      }
-  
-      const response = await axios.post<LoginResponse>(
-        `${process.env.NEXT_PUBLIC_API_URL}/users/login`,
-        formData
-      );
-  
-      const { message, user, accessToken } = response.data;
-      console.log("Login successful:", response.data);
-  
-      toast.success(message || "Login successful");
-  
-      if (user.role === "user") {
-        handleLoginSuccess(accessToken);
+      const response = await axios.post(`/api/login`, formData);
+      const { data } = response;
+      if (data.apiData.user.role == "user") {
         router.push("/w2/dashboard");
-      } else if (user.role === "lender") {
-        handleLoginSuccess(accessToken);
-        router.push("/lenders/dashboard");
       } else {
-        toast.error("Unknown role returned from server.");
+        router.push("/lenders/dashboard");
       }
+      setIsLoading(false);
     } catch (error: any) {
-      console.error("Login failed:", error.response?.data || error.message);
-      toast.error(error?.response?.data?.message || error.message || "Login failed");
-    } finally {
+      toast.error(error?.response?.data?.message);
       setIsLoading(false);
     }
   };
@@ -90,7 +61,7 @@ const Login = () => {
         <div className="flex items-center space-x-2">
           <Link href={"/"}>
             <img
-              alt="Gbese logo"
+              alt="Gbese logo blue icon with three stylized shapes"
               className="w-[100px]"
               height="40"
               src="/image/Logo.png"
@@ -107,8 +78,8 @@ const Login = () => {
           </button>
         </Link>
       </header>
-
-      <section className="flex flex-col flex-1 py-10 relative w-full mt-4 gap-20">
+      <section className="flex flex-col flex-1  py-10 relative w-full mt-4 gap-20">
+        {/* absolute left-4 md:left-[10vw] top-1  */}
         <section className="flex flex-col md:flex-row justify-center flex-1 px-2 md:px-16 py-10 gap-10 md:gap-20 max-w-[1200px] mx-auto w-full">
           <section className="mx-auto">
             <div className="mb-4">
@@ -119,7 +90,7 @@ const Login = () => {
                 https://app.gbese.com
               </p>
             </div>
-            <div className="flex flex-col space-y-2 max-w-md bg-white p-8 rounded-xl">
+            <div className="flex flex-col space-y-2 max-w-md bg-white p-8 rounded-xl ">
               <form
                 className="flex flex-col mt-6 space-y-6"
                 onSubmit={onSubmit}
@@ -131,13 +102,12 @@ const Login = () => {
                   To sign in, please type in the Username linked to your Gbese
                   account
                 </p>
-
                 <div className="flex flex-col space-y-1">
                   <label
                     className="font-semibold text-black text-sm"
                     htmlFor="email"
                   >
-                    Username
+                    Email
                   </label>
                   <input
                     className="border border-[#2563eb] rounded-md px-4 py-3 text-gray-400 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
@@ -169,7 +139,7 @@ const Login = () => {
                 <p className="text-gray-400 text-sm">
                   Forgot password?
                   <Link
-                    className="hover:underline"
+                    className=" hover:underline"
                     href="/auth/forgetPassword"
                   >
                     <span className="text-[#2563eb] mx-2">Reset it</span>
@@ -178,18 +148,16 @@ const Login = () => {
                 <button
                   className="bg-[#2563eb] cursor-pointer text-white rounded-md py-3 px-10 w-full md:w-max text-base font-normal hover:bg-[#1e40af] transition"
                   type="submit"
-                  disabled={isLoading}
                 >
                   {isLoading ? (
-                    <FaSpinner className="animate-spin inline-block mr-2" />
+                    <FaSpinner className="animate-spin" />
                   ) : (
                     "Sign In"
                   )}
                 </button>
-
                 <p className="text-gray-400 text-sm max-w-[320px]">
-                  If you don’t have a Gbese account, download the app
-                  <a className="hover:underline mx-1" href="#">
+                  If you don’t have a gbese account, download the app
+                  <a className=" hover:underline mx-1" href="#">
                     <span className="text-[#2563eb]">here</span>
                   </a>
                   and open an account in a few minutes
@@ -199,10 +167,12 @@ const Login = () => {
           </section>
           <section className="flex-1 mx-auto lg:flex justify-center items-center w-[50vw] hidden">
             <img
-              alt="Login illustration"
-              className="w-full h-[400px] rounded-lg"
+              alt="Illustration of a woman standing and using a smartphone with a large tablet device showing a login screen with email and password fields, office background with shelves and clock"
+              className="w-full  h-[400px] rounded-lg"
               draggable="false"
+              height="500"
               src="/image/login.png"
+              // width="400"
             />
           </section>
         </section>
