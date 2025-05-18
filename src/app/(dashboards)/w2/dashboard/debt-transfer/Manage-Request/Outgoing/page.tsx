@@ -2,13 +2,35 @@
 
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import TopNavbar from "@/components/layout/TopNavbar";
 import BalanceCard from "@/components/dashboard/BalanceCard";
+import { useGetCurrentUserQuery } from "@/redux/services/slices/UserSlice";
 
 const DebtTransferPage = () => {
   const router = useRouter();
   const activeTab: string = "outgoing"; // hardcoded, can be dynamic based on query
+  const { data: user, isLoading, error, isSuccess } = useGetCurrentUserQuery(null);
+  
+    if (isLoading) {
+      return (
+        <div className="flex items-center justify-center h-screen">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500"></div>
+        </div>
+      );
+    }
+    if (error) {
+      return (
+        <div className="flex items-center justify-center h-screen">
+          <p className="text-red-500">Error: Failed to load Data</p>
+        </div>
+      );
+    }
+    if (isSuccess && user?.role !== "user") {
+      return (
+        <div className="flex items-center justify-center h-screen">
+          <p className="text-red-500">Unauthorized</p>
+        </div>
+      );
+    }
 
   const handleRoute = (path: string) => {
     router.push(path);
@@ -16,7 +38,7 @@ const DebtTransferPage = () => {
 
   return (
     <div className="mt-10">
-      <BalanceCard />
+      <BalanceCard user={user!} />
       <div className=" px-4 md:px-12 pb-10 mt-10">
         {/* Buttons */}
         <div className="flex flex-wrap gap-2 mt-6">

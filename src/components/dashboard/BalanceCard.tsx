@@ -5,10 +5,19 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import FiatCryptoToggle from "../FiatCryptoToggle";
+import { useGetCurrentUserQuery } from "@/redux/services/slices/UserSlice";
+import toast from "react-hot-toast";
 
-export default function BalanceCard() {
+
+
+interface BalanceCardProps {
+  user: {
+    fiatBalance?: number;
+  };
+}
+
+export default function BalanceCard({ user }: BalanceCardProps) {
   const pathname = usePathname();
-
   return (
     <div className="relative space-y-4 mx-auto md:w-[50%] w-[90%]">
       <div>
@@ -25,8 +34,8 @@ export default function BalanceCard() {
             height={100}
           />
           <div className="text-sm relative z-10">Fiat Balance</div>
-          <div className="text-3xl font-semibold relative z-10">NGN400.12</div>
-          <div className="text-xs relative z-10">Last updated 38 secs ago</div>
+          <div className="text-3xl font-semibold relative z-10">NGN {user?.fiatBalance?.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+          <div className="text-xs relative z-10">Last updated 30 secs ago</div>
         </div>
       </div>
 

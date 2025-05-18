@@ -1,12 +1,38 @@
 'use client';
+import { useGetCurrentUserQuery } from '@/redux/services/slices/UserSlice';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import { toast } from 'sonner';
 
 export default function AccountPage() {
-  const handleCopy = () => {
-    navigator.clipboard.writeText('123456789');
-    toast.success('Account number copied!');
+
+  const { data: user, isLoading, error, isSuccess } = useGetCurrentUserQuery(null);
+  
+    if (isLoading) {
+      return (
+        <div className="flex items-center justify-center h-screen">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500"></div>
+        </div>
+      );
+    }
+    if (error) {
+      return (
+        <div className="flex items-center justify-center h-screen">
+          <p className="text-red-500">Error: Failed to load Data</p>
+        </div>
+      );
+    }
+    if (isSuccess && user?.role !== "user") {
+      return (
+        <div className="flex items-center justify-center h-screen">
+          <p className="text-red-500">Unauthorized</p>
+        </div>
+      );
+    }
+  const handleCopy = (value:string) => {
+    navigator.clipboard.writeText(value);
+    toast.success('copied!');
   };
 
   const accountOptions = [
@@ -27,26 +53,26 @@ export default function AccountPage() {
         <h2 className="text-center mt-10 mb-6 font-bold">Account</h2>
         <div className="flex justify-center items-center gap-4 mb-8">
           <Image
-            src="/account-image.png"
+            src="/user.svg"
             alt="Profile Image"
             width={64}
             height={64}
             className="rounded-full"
           />
           <div>
-            <h2 className="text-sm font-bold">Salem Onah</h2>
+            <h2 className="text-sm font-bold">{user!.username}</h2>
             <div className="flex flex-col items-center text-sm text-gray-500 gap-3">
               <button className="flex items-center gap-1">
-                <Image onClick={handleCopy} 
+                <Image onClick={() => handleCopy(`@${user!.username}`)} 
                 src="/copy.svg" alt="Copy" width={14} height={14} 
                 className="cursor-pointer" />
-                <span>@salemonah</span>
+                <span>@{user!.username}</span>
               </button>
               <button className="flex items-center gap-1">
-                <Image onClick={handleCopy}
+                <Image onClick={() => handleCopy(user!.phoneNumber)}
                 src="/copy.svg" alt="Copy" width={14} height={14}
                 className=" cursor-pointer" />
-                <span>123456789</span>
+                <span>{user!.phoneNumber}</span>
               </button>
             </div>
           </div>

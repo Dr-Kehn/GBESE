@@ -18,7 +18,9 @@ export async function GET() {
   }
 
   const { value } = token;
-
+  
+  const response = NextResponse.json({ token: value });
+  response.cookies.set("gbese.sid", value);
  
 
   return NextResponse.json({ token: value });

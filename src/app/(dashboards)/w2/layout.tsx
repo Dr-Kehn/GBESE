@@ -3,6 +3,8 @@ import "../../globals.css";
 import { Work_Sans } from "next/font/google";
 import { Toaster } from 'sonner';
 import TopNavbar from "@/components/layout/TopNavbar";
+import React from "react";
+
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -20,6 +22,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
+  
   return (
     <html lang="en">
       <body className={workSans.className} suppressHydrationWarning={true}>

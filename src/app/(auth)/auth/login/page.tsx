@@ -21,9 +21,7 @@ const Login = () => {
       email,
       password,
     };
-    await login(formData).unwrap().then((payload:any) =>{
-      const data = payload.apiData;
-      
+    await login(formData).unwrap().then((data:any) =>{
       if (data.success === false){
         throw new Error(data.message);
       }
@@ -31,7 +29,7 @@ const Login = () => {
         toast.success(data.message);
         router.push("/w2/dashboard");
       }
-      if (data.user.role == "lender"){        
+      if (data.role == "lender"){        
         router.push("/lenders/dashboard");
       }
       

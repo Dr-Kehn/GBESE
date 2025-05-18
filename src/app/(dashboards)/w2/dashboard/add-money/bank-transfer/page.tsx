@@ -1,17 +1,40 @@
 "use client";
 
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import TopNavbar from "@/components/layout/TopNavbar";
 import BalanceCard from "@/components/dashboard/BalanceCard";
+import { useGetCurrentUserQuery } from "@/redux/services/slices/UserSlice";
 
 export default function BankTransferPage() {
   const router = useRouter();
+
+  const { data: user, isLoading, error, isSuccess } = useGetCurrentUserQuery(null);
+  
+    if (isLoading) {
+      return (
+        <div className="flex items-center justify-center h-screen">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500"></div>
+        </div>
+      );
+    }
+    if (error) {
+      return (
+        <div className="flex items-center justify-center h-screen">
+          <p className="text-red-500">Error: Failed to load Data</p>
+        </div>
+      );
+    }
+    if (isSuccess && user?.role !== "user") {
+      return (
+        <div className="flex items-center justify-center h-screen">
+          <p className="text-red-500">Unauthorized</p>
+        </div>
+      );
+    }
   const bankName = "Gbese";
   const accountNumber = "123456789";
   const accountName = "Big Baby Kehn";
@@ -40,7 +63,7 @@ export default function BankTransferPage() {
 
   return (
     <div className="mt-10">
-        <BalanceCard />
+        <BalanceCard user={user!} />
       <section className="w-full px-4 py-6">
         <div className="max-w-xl mx-auto mt-6">
           {/* Back link */}
@@ -69,6 +92,7 @@ export default function BankTransferPage() {
                   <input
                     readOnly
                     value={bankName}
+                    placeholder="Bank Name"
                     className="w-full mt-1 p-2 border rounded-lg bg-gray-100"
                   />
                 </div>
@@ -79,6 +103,7 @@ export default function BankTransferPage() {
                   <input
                     readOnly
                     value={accountNumber}
+                    placeholder="Account Number"
                     className="w-full mt-1 p-2 border rounded-lg bg-gray-100"
                   />
                 </div>
@@ -87,6 +112,7 @@ export default function BankTransferPage() {
                   <input
                     readOnly
                     value={accountName}
+                    placeholder="Account Name"
                     className="w-full mt-1 p-2 border rounded-lg bg-gray-100"
                   />
                 </div>
