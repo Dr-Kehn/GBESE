@@ -1,15 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import BalanceCard from "@/components/lenders/dashboard/BalanceCard";
 import {
-  useLazyGetCurrentUserQuery,
-  IUserResponse,
+  useGetCurrentUserQuery,
 } from "@/redux/services/slices/UserSlice";
 
 const beneficiaries = [
@@ -44,51 +42,31 @@ const recentTransactions = [
 ];
 
 export default function LenderDashboardBody() {
-  const router = useRouter();
-
-  const [user, setUser] = useState<IUserResponse | null>(() => {
-    if (typeof window === "undefined") return null;
-    const stored = localStorage.getItem("currentUser");
-    return stored ? JSON.parse(stored) : null;
-  });
-
-  const [lastUpdated, setLastUpdated] = useState<number>(() => {
-    if (typeof window === "undefined") return Date.now();
-    const storedTimestamp = localStorage.getItem("userLastUpdated");
-    return storedTimestamp ? parseInt(storedTimestamp, 10) : Date.now();
-  });
-
-  const [triggerGetUser, { isLoading, isError, error }] =
-    useLazyGetCurrentUserQuery();
+  const { data: user, isLoading, isError, error } = useGetCurrentUserQuery();
 
   useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const result = await triggerGetUser().unwrap();
-        setUser(result);
-        const now = Date.now();
-        setLastUpdated(now);
-        localStorage.setItem("currentUser", JSON.stringify(result));
-        localStorage.setItem("userLastUpdated", now.toString());
-      } catch (err) {
-        console.error("Failed to fetch user", err);
-      }
-    };
-
-    fetchUser();
-  }, [triggerGetUser]);
-
-  useEffect(() => {
-    if (isError && (error as any)?.status === 401) {
-      router.push("/auth/login");
+    if (isError) {
+      console.warn("useGetCurrentUserQuery failed:", error);
+    } else if (user) {
+      console.log("User data fetched:", user);
     }
-  }, [isError, error, router]);
+  }, [user, isError, error]);
 
-  if (!user) {
+  if (isLoading) {
     return (
       <div className="flex justify-center items-center h-full py-20">
         <span className="animate-pulse text-blue-600 font-semibold">
           Loading dashboard…
+        </span>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="flex justify-center items-center h-full py-20">
+        <span className="text-red-500 font-semibold">
+          Failed to load user info.
         </span>
       </div>
     );
@@ -101,7 +79,7 @@ export default function LenderDashboardBody() {
           <h2 className="text-lg font-bold text-gray-800 mx-auto md:w-[50%] w-[90%]">
             Welcome back, {user.username.split(" ")[0]}
           </h2>
-          <BalanceCard  />
+          <BalanceCard />
         </div>
 
         <div className="space-y-4 mx-auto md:w-[50%] w-[90%]">
