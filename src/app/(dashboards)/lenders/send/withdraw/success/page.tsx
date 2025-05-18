@@ -27,7 +27,7 @@ export default function TransferSuccess() {
         </p>
 
         {/* Home Button */}
-        <Link href="/w2/dashboard">
+        <Link href="/lenders/dashboard">
           <button className="bg-blue-600 text-white px-6 py-2 text-sm rounded hover:bg-blue-700 transition">
             Home
           </button>

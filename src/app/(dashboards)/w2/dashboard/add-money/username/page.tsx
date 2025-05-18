@@ -6,7 +6,6 @@ import Link from "next/link";
 import { toast } from "sonner";
 import { ChevronLeft } from "lucide-react";
 
-import TopNavbar from "@/components/layout/TopNavbar";
 import BalanceCard from "@/components/dashboard/BalanceCard";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";

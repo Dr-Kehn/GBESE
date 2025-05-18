@@ -13,11 +13,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import TopNavbar from "@/components/layout/TopNavbar";
 import BalanceCard from "@/components/dashboard/BalanceCard";
 
 export default function AddMoneyCardPage() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);  
 
   return (
     <div className="min-h-screen bg-white mt-10">

@@ -1,8 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Link from "next/link";
-import TopNavbar from "@/components/layout/TopNavbar";
+import { useGetCurrentUserQuery } from "@/redux/services/slices/UserSlice";
 import BalanceCard from "@/components/dashboard/BalanceCard";
 
 export default function BorrowOptionsCard() {

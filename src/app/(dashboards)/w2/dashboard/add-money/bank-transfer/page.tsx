@@ -12,6 +12,7 @@ import BalanceCard from "@/components/dashboard/BalanceCard";
 
 export default function BankTransferPage() {
   const router = useRouter();
+
   const bankName = "Gbese";
   const accountNumber = "123456789";
   const accountName = "Big Baby Kehn";
@@ -68,6 +69,7 @@ export default function BankTransferPage() {
                   <label className="text-sm text-gray-500">Bank Name</label>
                   <input
                     readOnly
+                    placeholder="Bank Name"
                     value={bankName}
                     className="w-full mt-1 p-2 border rounded-lg bg-gray-100"
                   />
@@ -78,6 +80,7 @@ export default function BankTransferPage() {
                   </label>
                   <input
                     readOnly
+                    placeholder="Account Number"
                     value={accountNumber}
                     className="w-full mt-1 p-2 border rounded-lg bg-gray-100"
                   />
@@ -86,6 +89,7 @@ export default function BankTransferPage() {
                   <label className="text-sm text-gray-500">Account Name</label>
                   <input
                     readOnly
+                    placeholder="Account Name"
                     value={accountName}
                     className="w-full mt-1 p-2 border rounded-lg bg-gray-100"
                   />

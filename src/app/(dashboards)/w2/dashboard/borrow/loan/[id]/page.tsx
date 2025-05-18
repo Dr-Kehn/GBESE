@@ -10,10 +10,12 @@ import {
 } from "@/redux/services/slices/loanSlice";
 import { toast } from "react-hot-toast"; 
 
+
 export default function LoanForm() {
   const router = useRouter();
   const params = useParams();
-  const loanOfferId = params.id as string  
+  const loanOfferId = params.id as string
+
   
   const [createNewLoanRequest, { isLoading: isSubmitting }] = useCreateNewLoanRequestMutation();
   const [getSingleLoanOffer, { isLoading: isLoadingOffer }] = useGetSingleLoanOfferMutation();
