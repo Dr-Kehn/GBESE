@@ -25,8 +25,8 @@ export default function RootLayout({
       <body className={workSans.className} suppressHydrationWarning={true}>
         <Providers>
           {children}
+          <Toaster />
         </Providers>
-        <Toaster />
       </body>
     </html>
   )

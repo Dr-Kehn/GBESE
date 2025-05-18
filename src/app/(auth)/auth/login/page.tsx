@@ -43,6 +43,9 @@ const Login = () => {
     try {
       const response = await axios.post(`/api/login`, formData);
       const { data } = response;
+      if (data.apiData.success == false){
+        throw new Error(data.apiData.message);
+      }
       if (data.apiData.user.role == "user") {
         router.push("/w2/dashboard");
       } else {
@@ -50,7 +53,8 @@ const Login = () => {
       }
       setIsLoading(false);
     } catch (error: any) {
-      toast.error(error?.response?.data?.message);
+      console.log(error);
+      toast.error(error.message);
       setIsLoading(false);
     }
   };
