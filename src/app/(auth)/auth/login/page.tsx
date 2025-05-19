@@ -43,14 +43,20 @@ const Login = () => {
     try {
       const response = await axios.post(`/api/login`, formData);
       const { data } = response;
+      if (data.apiData.success == false){
+        throw new Error(data.apiData.message);
+      }
       if (data.apiData.user.role == "user") {
+        toast.success(data.apiData.message);
         router.push("/w2/dashboard");
       } else {
+        toast.success(data.apiData.message);
         router.push("/lenders/dashboard");
       }
       setIsLoading(false);
     } catch (error: any) {
-      toast.error(error?.response?.data?.message);
+      console.log(error);
+      toast.error(error.message);
       setIsLoading(false);
     }
   };
@@ -99,7 +105,7 @@ const Login = () => {
                   Sign In to Gbese
                 </h1>
                 <p className="text-gray-500 text-base leading-relaxed">
-                  To sign in, please type in the Username linked to your Gbese
+                  To sign in, please type in the email address linked to your Gbese
                   account
                 </p>
                 <div className="flex flex-col space-y-1">
